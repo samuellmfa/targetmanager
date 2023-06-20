@@ -1,8 +1,11 @@
+import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-
+import _check from '../../script_library/check'
+import _footer from './component /Footer/footer'
+import script_library from '../../script_library/check'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -14,11 +17,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       <main className={`${styles.main} ${inter.className}`}>
+        <_check/>
+        
+        <Image
+                src="/images/title.png"
+                alt="Vercel Logo"
+                className={styles.vercelLogo}
+                width={800 }
+                height={50}
+                
+              />
+        <check/>
         <div className={styles.description}>
           <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.js</code>
+            Applications &nbsp;
+            
           </p>
           <div>
             <a
@@ -26,28 +41,12 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
+             <p>
+            Get Regitered&nbsp;
+          </p>
+             
             </a>
           </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
         </div>
 
         <div className={styles.grid}>
@@ -108,7 +107,9 @@ export default function Home() {
             </p>
           </a>
         </div>
+       
       </main>
-    </>
+      <_footer vercelLogo={styles.vercelLogo} />
+     </>
   )
 }
