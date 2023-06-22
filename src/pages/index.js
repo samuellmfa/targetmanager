@@ -3,11 +3,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import _check from '../../script_library/check'
 import _footer from './component /Footer/footer'
-import script_library from '../../script_library/check'
+import Barchart from './charts/bar'
+import Piechart from './charts/pie'
+import Linechart from './charts/line'
 const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
   return (
     <>
@@ -19,7 +19,6 @@ export default function Home() {
       </Head>
       
       <main className={`${styles.main} ${inter.className}`}>
-        <_check/>
         
         <Image
                 src="/images/title.png"
@@ -31,24 +30,38 @@ export default function Home() {
               />
         <check/>
         <div className={styles.description}>
+        <a
+              href="/account/employee"
+              target="_self"
+              rel="noopener noreferrer"
+            >
           <p>
             Applications &nbsp;
             
           </p>
+          </a>
           <div>
             <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
+              href="/account/registration"
+              target="_self"
               rel="noopener noreferrer"
             >
              <p>
-            Get Regitered&nbsp;
+            Get Registered&nbsp;
           </p>
              
             </a>
           </div>
         </div>
-
+        <div>
+          <Barchart/>
+          </div>
+          <div>
+          <Linechart/>
+          </div>
+          <div>
+          <Piechart/>
+        </div>
         <div className={styles.grid}>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -57,7 +70,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2>
-              Docs <span>-&gt;</span>
+              performance evaluation <span>-&gt;</span>
             </h2>
             <p>
               Find in-depth information about Next.js features and&nbsp;API.
@@ -71,7 +84,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2>
-              Learn <span>-&gt;</span>
+              planning <span>-&gt;</span>
             </h2>
             <p>
               Learn about Next.js in an interactive course with&nbsp;quizzes!
@@ -85,7 +98,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2>
-              Templates <span>-&gt;</span>
+              Analysis <span>-&gt;</span>
             </h2>
             <p>
               Discover and deploy boilerplate example Next.js&nbsp;projects.
@@ -99,7 +112,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2>
-              Deploy <span>-&gt;</span>
+              Work managment <span>-&gt;</span>
             </h2>
             <p>
               Instantly deploy your Next.js site to a shareable URL
