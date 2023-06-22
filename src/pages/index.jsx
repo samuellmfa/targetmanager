@@ -55,6 +55,10 @@ export default function HomePage( {username} ) {
                
               </a>
             </div>
+            <>
+            <Link href="/login">Login</Link><br/>
+            <Link href="/signup">Signup</Link>
+        </>
           </div>
           <div>
             <Barchart/>
