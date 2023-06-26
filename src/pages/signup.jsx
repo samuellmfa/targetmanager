@@ -14,8 +14,9 @@ export default function SignupPage( {username} ) {
             :
                 <></>
             }
-            <h2>Sign up</h2>
+            <h2>Register your organization</h2>
             <form action='/api/signup' method='POST'>
+                <input minLength="3" name="Organization" id="name" type="text" placeholder="Organization's Name" required></input><br/>
                 <input minLength="3" name="username" id="username" type="text" placeholder='username' required></input><br/>
                 <input minLength="5" name="password" id="password" type="password" placeholder='password' required></input><br/>
                 <input minLength="5" name="passwordagain" id="passwordagain" type="password" placeholder='password again' required></input><br/>

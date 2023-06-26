@@ -4,7 +4,9 @@ const {createHash} = require('node:crypto');
 
 export default async function handler(req, res) {
   if (req.method == "POST"){
-    const Organization = req.body['Organization']
+    const Organization = req.body['name']
+    const Title = req.body['Title']
+    const Department = req.body['Department']
     const username = req.body['username']
     const password = req.body['password']
     const passwordagain = req.body['passwordagain']
@@ -23,6 +25,8 @@ export default async function handler(req, res) {
     const currentDate = new Date().toUTCString();
     const bodyObject = {
         Organization:Organization,
+        Title:Title,
+        Department:Department,
         Username: username,
         Password: password_hash,
         Created: currentDate

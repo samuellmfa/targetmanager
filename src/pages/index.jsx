@@ -11,7 +11,7 @@ import Barchart from './charts/bar'
 import Piechart from './charts/pie'
 import Linechart from './charts/line'
 const inter = Inter({ subsets: ['latin'] })
-export default function HomePage( {username} ) {
+export default function HomePage( {username,Organization} ) {
     return (
         <>
         <Head>
@@ -39,25 +39,40 @@ export default function HomePage( {username} ) {
                 rel="noopener noreferrer"
               >
             <p>
-              Applications &nbsp;
+              Home &nbsp;
               
             </p>
             </a>
             <div>
-              <a
-                href="/account/registration"
-                target="_self"
-                rel="noopener noreferrer"
-              >
-               <p>
-              Get Registered&nbsp;
-            </p>
-               
-              </a>
+            {username ?
+         <>
+         <a href="/account/registration" target="_self"rel="noopener noreferrer"><p> Your {Organization} Monthly Plan&nbsp;</p></a>
+         <a href="/account/registration" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Plan&nbsp;</p></a>
+         </>
+        : 
+        <>
+            {/* <h2>Start Planning</h2> */}
+        </>
+        }
+
+             
             </div>
             <>
+
+            <Layout pageTitle="Home">
+        {username ?
+        <>
+            <h2>Hi {username}</h2>
+            <Link href="/profile">Profile</Link><br/>
+            <Link href="/account/employee">Create Employee's Account</Link><br/>
+            <Link href="/api/logout">Logout</Link><br/>
+        </>: 
+        <>
             <Link href="/login">Login</Link><br/>
             <Link href="/signup">Signup</Link>
+        </>
+        }
+        </Layout>
         </>
           </div>
           <div>
@@ -130,20 +145,7 @@ export default function HomePage( {username} ) {
          
         </main>
         <_footer vercelLogo={styles.vercelLogo} />
-        <Layout pageTitle="Home">
-        {username ?
-        <>
-            <h2>Hi {username}</h2>
-            <Link href="/profile">Profile</Link><br/>
-            <Link href="/api/logout">Logout</Link>
-        </>: 
-        <>
-            <h2>Log in</h2>
-            <Link href="/login">Login</Link><br/>
-            <Link href="/signup">Signup</Link>
-        </>
-        }
-        </Layout>
+       
        </>
         
     );
