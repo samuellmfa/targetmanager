@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const guess = req.body['password']
     const client = await clientPromise;
     const db = client.db("Accounts");
-    const users = await db.collection("Profiles").find({"Username": username}).toArray();
+    const users = await db.collection("profiles").find({"Username": username}).toArray();
     if (users.length == 0){
         res.redirect("/login?msg=Incorrect username or password");
         return;

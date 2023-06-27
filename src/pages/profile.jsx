@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
     }
     const client = await clientPromise;
     const db = client.db("Accounts");
-    const users = await db.collection("Profiles").find({"Username": username}).toArray();
+    const users = await db.collection("profiles").find({"Username": username}).toArray();
     const userdoc = users[0]
     const created = userdoc['Created']
     return {

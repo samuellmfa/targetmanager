@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     }
     const client = await clientPromise;
     const db = client.db("Accounts");
-    const users = await db.collection("Profiles").find({"Username": username}).toArray();
+    const users = await db.collection("profiles").find({"Username": username}).toArray();
     if (users.length > 0){
         res.redirect("/signup?msg=An Organization with this name already has been registered");
         return;
@@ -27,11 +27,12 @@ export default async function handler(req, res) {
         Password: password_hash,
         Created: currentDate
     }
-    await db.collection("Profiles").insertOne(bodyObject);
+    await db.collection("profiles").insertOne(bodyObject);
     const cookies = new Cookies(req, res)
     cookies.set('username', username)
     res.redirect("/")
   } else {
-    res.redirect("/")
+    res.redirect("/signup?msg=An Organization with this name not registered correctly");
+    // res.redirect("/")
   }
 }
