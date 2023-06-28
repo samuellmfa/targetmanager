@@ -8,7 +8,8 @@ export default  function Employee( {username, created} )
 {
     const router = useRouter();
     const { msg } = router.query
-    const { data, isLoading } = useSWR("/api/products");
+    const { data, isLoading } = useSWR("/api/departments");
+    console.log("data :",data)
     if (!data) return;
    
     if (isLoading) {
@@ -50,9 +51,9 @@ export default  function Employee( {username, created} )
     <label htmlFor="Department">
        Department:
           <select id="Department" name="Department">
-          {data.map((product) => (
-            <option value={product.name} key={product._id}>
-              {product.name}
+          {data.map((dept) => (
+            <option value={dept.name} key={dept._id}>
+              {dept.name}
           </option>
         ))}
             <option value="GBP">GBP</option>
