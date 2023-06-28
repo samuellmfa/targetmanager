@@ -11,7 +11,9 @@ import Barchart from './charts/bar'
 import Piechart from './charts/pie'
 import Linechart from './charts/line'
 const inter = Inter({ subsets: ['latin'] })
+
 export default function HomePage( {username,Organization} ) {
+  
     return (
         <>
         <Head>
@@ -22,7 +24,7 @@ export default function HomePage( {username,Organization} ) {
         </Head>
         
         <main className={`${styles.main} ${inter.className}`}>
-          
+      
           <Image
                   src="/images/title.png"
                   alt="Vercel Logo"
@@ -34,7 +36,7 @@ export default function HomePage( {username,Organization} ) {
           <check/>
           <div className={styles.description}>
           <a
-                href="/account/employee"
+                href="/profile/employee"
                 target="_self"
                 rel="noopener noreferrer"
               >
@@ -46,8 +48,8 @@ export default function HomePage( {username,Organization} ) {
             <div>
             {username ?
          <>
-         <a href="/account/employee" target="_self"rel="noopener noreferrer"><p> Your {Organization} Monthly Plan&nbsp;</p></a>
-         <a href="/account/registration" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Plan&nbsp;</p></a>
+         <a href="/profile/employee" target="_self"rel="noopener noreferrer"><p> Your {Organization} Monthly Plan&nbsp;</p></a>
+         <a href="/profile/registration" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Plan&nbsp;</p></a>
          </>
         : 
         <>
@@ -64,7 +66,8 @@ export default function HomePage( {username,Organization} ) {
         <>
             <h2>Hi {username}</h2>
             <Link href="/profile">Profile</Link><br/>
-            <Link href="/account/employee">Create Employee's Account</Link><br/>
+            <Link href="/profile/employee">Create Employee's Account</Link><br/>
+            <Link href="/department">Create Departments</Link><br/>
             <Link href="/api/logout">Logout</Link><br/>
         </>: 
         <>

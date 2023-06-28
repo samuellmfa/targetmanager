@@ -15,24 +15,6 @@ export default  function Employee( {username, created} )
     if (isLoading) {
       return <h1>Loading...</h1>;
     }
-    async function handleListDepartment() {
-        const response = await fetch("/api/employee", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data_exapmle),
-        });
-    
-        if (response.ok) {
-          await response.json();
-          products.mutate();
-        } else {
-          console.error(response.status);
-        }
-      }
-
-
 
     return (
         
@@ -44,7 +26,7 @@ export default  function Employee( {username, created} )
                 <></>
             }
             <h3>Employee's Account Registration</h3>
-            <form action='/api/employee' method='POST'>
+            <form action='/api/profiles/employee' method='POST'>
    <h3>Create employee Account </h3>
     <label htmlFor="name">Full name</label> <input type="text" name="name" id="name"></input><br></br>
     <label htmlFor="Title">Job Title</label> <input type="text" name="Title" id="Title"></input><br></br>
@@ -52,11 +34,10 @@ export default  function Employee( {username, created} )
        Department:
           <select id="Department" name="Department">
           {data.map((dept) => (
-            <option value={dept.name} key={dept._id}>
-              {dept.name}
+            <option value={dept.Level_name} key={dept._id}>
+              {dept.Level_name}
           </option>
         ))}
-            <option value="GBP">GBP</option>
           </select>
         </label> <br></br><br></br>
     <label htmlFor="IsHead">Is the Head of the department</label> <input type="checkbox" name="IsHead" id="IsHead"></input><br></br><br></br>
@@ -65,17 +46,6 @@ export default  function Employee( {username, created} )
     <label htmlFor="passwordagain">confirm</label><input minLength="5" name="passwordagain" id="passwordagain" type="password" placeholder='password again' required></input><br/>
     <input type="submit" value="Create Account"/>
     </form>
- 
-
-
-
-
-
-
-
-
-
-
 
 
     </Layout>
@@ -86,11 +56,14 @@ export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
     var username = getCookie('username', { req, res });
+    var Organization = getCookie('Organization', { req, res });
+    var IsEmployee = getCookie('IsEmployee', { req, res });
+    console.log(Organization,username,IsEmployee)
     // if (username != undefined){
     //     return {
     //         redirect: {
     //             permanent: false,
-    //             destination: "/account/employee"
+    //             destination: "/profile/employee"
     //         }
     //     }
     // }

@@ -14,7 +14,7 @@ export default function SignupPage( {username} ) {
             :
                 <></>
             }
-            <h2>Register your organization</h2>
+            <h2>Register your Organization</h2>
             <form action='/api/signup' method='POST'>
                 <input minLength="3" name="Organization" id="name" type="text" placeholder="Organization's Name" required></input><br/>
                 <input minLength="3" name="username" id="username" type="text" placeholder='username' required></input><br/>
@@ -39,5 +39,5 @@ export async function getServerSideProps(context) {
             }
         }
     }
-    return { props: {username:false} };
+    return { props: {username:false,} };
 };

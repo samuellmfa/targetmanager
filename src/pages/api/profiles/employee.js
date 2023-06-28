@@ -47,9 +47,9 @@
 //     res.redirect("/")
 //   }
 // }
-
-import dbConnect from "../../../db/connect";
-import Profile from "../../../db/models/Profile";
+import Cookies from 'cookies'
+import dbConnect from "../../../../db/connect";
+import Profile from "../../../../db/models/Profile";
 const {createHash} = require('node:crypto');
 export default async function handler(req, res) {
   await dbConnect();
@@ -61,8 +61,7 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    
-    
+
     try {
         const name = req.body['name']
     const Title = req.body['Title']
@@ -81,10 +80,12 @@ export default async function handler(req, res) {
         return;
     }
     const password_hash = createHash('sha256').update(password).digest('hex');
+    const cookies = new Cookies(req, res)
     const currentDate = new Date().toUTCString();
+    
         const bodyObject = {
         name:name,
-        Organization:req.Organization,
+        Organization:	cookies.get('Organization'),
         Department:Department,
         IsHead:IsHead,
         Title:Title,
@@ -96,6 +97,7 @@ export default async function handler(req, res) {
 
       const profile = new Profile(profileData);
       await profile.save();
+      
       return res.status(201).json({ status: "Product created." });
     } catch (error) {
       console.error(error);

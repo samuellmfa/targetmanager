@@ -12,6 +12,11 @@ const profileSchema = new Schema({
   Username: { type: String, required: true },
   Password: { type: String, required: true },
   Created : { type: String , required: true },
+  Organization : { type: String , required: true },
+  IsEmployee: {
+    type: Boolean,
+    default: true
+   },
 });
 
 const Profile =

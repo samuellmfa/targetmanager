@@ -18,7 +18,8 @@ export default async function handler(req, res) {
     if (guess_hash == user.Password){
         const cookies = new Cookies(req, res)
         cookies.set('username', username)
-        res.redirect("/account/employee")
+        cookies.set('Organization', user.Organization)
+        res.redirect("/")
     } else {
         res.redirect("/login?msg=Incorrect username or password")
     }
