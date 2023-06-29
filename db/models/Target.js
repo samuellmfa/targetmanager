@@ -22,7 +22,10 @@ const targetSchema = new Schema({
     Parent_plan: { type: String, required: true },
     Evaluation: { type: Number, required: true },
     EvaluationResult: { type: Number, required: true },
-
+    employees : [{
+      name : String,
+      username : String
+       }]
   // reviews: { type: [Schema.Types.ObjectId], ref: "Review" },
 });
 

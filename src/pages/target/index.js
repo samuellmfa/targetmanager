@@ -4,11 +4,12 @@ import { getCookie } from 'cookies-next';
 import Link from 'next/link'
 import useSWR from "swr";
 import { useRouter } from "next/router";
+import 'bootstrap/dist/css/bootstrap.css';
 export default  function Employee( {username, created} )
 {
     const router = useRouter();
     const { msg } = router.query
-    const { data, isLoading } = useSWR("/api/departments");
+    const { data, isLoading } = useSWR("/api/targets");
     console.log("data :",data)
     if (!data) return;
    
@@ -28,28 +29,30 @@ export default  function Employee( {username, created} )
             <h3>Plan your annual tasks</h3>
             <form action='/api/profiles/employee' method='POST'>
  <table border={1}>
+ {data.map((tar) => (
     <tr>
         <td>
-        <textarea id="story" name="story" rows="5" cols="33"> It was a dark and stormy night...</textarea>
+        <textarea id="story" name="story" rows="5" cols="33">{tar.Year_target}</textarea>
         </td>
         <td>
-        <label htmlFor="name">40</label>
+        <label htmlFor="name">{tar.Weight}</label>
         </td>
         <td>
-       <table>
-                
-                    
-        {data.map((dept) => (
-            <>
+       
+                <table> 
+              {tar.employees.map((emp)=>
+              (
+              <>
+
+             
             <tr>
-            <td>
-            <label htmlFor="Title" id={dept.Level_name} key={dept._id}>
-              {dept.Level_name}
-              </label> 
+            <td> 
+            <label>{emp.name}
+                </label> 
             </td>
              
                                   <td>
-                                  <button type="button" class="btn btn-outline-success btn-xs">Jan</button>
+                                  {/* <button type="button" class="btn btn-primary btn-xs">Jan{emp.Jan}</button>
                                   <button type="button" class="btn btn-outline-success btn-xs">Feb</button>
                                   <button type="button" class="btn btn-outline-success btn-xs">Mar</button>
                                   <button type="button" class="btn btn-outline-success btn-xs">Apr</button>
@@ -60,21 +63,41 @@ export default  function Employee( {username, created} )
                                   <button type="button" class="btn btn-outline-success btn-xs">Sep</button>
                                   <button type="button" class="btn btn-outline-success btn-xs">Oct</button>
                                   <button type="button" class="btn btn-outline-success btn-xs">Nov</button>
-                                  <button type="button" class="btn btn-outline-success btn-xs">Dec</button>
+                                  <button type="button" class="btn btn-outline-success btn-xs">Dec</button> */}
+                                  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                                   <div class="btn-group mr-2" role="group" aria-label="First group">
+                                         <button type="button" class="btn btn-outline-success btn-xs">Jan</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Feb</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Mar</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Apr</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">May</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Jun</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Jul</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Aug</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Sep</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Oct</button>
+                                         <button type="button" class="btn btn-outline-success btn-xs">Nov</button>
+                                         <button type="checkbox" class="btn btn-outline-success btn-xs">Dec</button>
+                                         
+                                         </div>
+  
+                                         </div>
+                                      
+                                  </td>
+                                  <td>
+                                  
                                   </td>
                                   </tr>
                                   </>
-        ))}
-                                  
-                                   
-
-            
-
-                    
-               
+                                   )
+                                   )}
             </table>
         </td>
+        <td>
+        <button type="button" class="btn btn-outline-success btn-xs">+</button>
+        </td>
     </tr>
+    ))}
  </table>
  <br></br><br></br><br></br><input type="submit" value="Create Account"/>
     </form>
