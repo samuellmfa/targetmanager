@@ -31,7 +31,7 @@ export default function Home() {
         <check/>
         <div className={styles.description}>
         <a
-              href="/account/employee"
+              href="/profile/employee"
               target="_self"
               rel="noopener noreferrer"
             >
@@ -42,7 +42,7 @@ export default function Home() {
           </a>
           <div>
             <a
-              href="/account/registration"
+              href="/profile/registration"
               target="_self"
               rel="noopener noreferrer"
             >
