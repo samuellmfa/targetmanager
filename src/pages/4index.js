@@ -42,7 +42,7 @@ export default function Home() {
           </a>
           <div>
             <a
-              href="/account/registration"
+              href="/profile/registration"
               target="_self"
               rel="noopener noreferrer"
             >

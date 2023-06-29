@@ -3,7 +3,7 @@ import { getCookie } from 'cookies-next';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export default function LoginPage( {username,organization} ) {
+export default function LoginPage( {username,Organization} ) {
     const router = useRouter()
     const { msg } = router.query
     return (
@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
     var username = getCookie('username', { req, res });
-    var organization = getCookie('organization', { req, res });
+    var Organization = getCookie('Organization', { req, res });
     if (username != undefined){
         return {
             redirect: {
@@ -37,5 +37,5 @@ export async function getServerSideProps(context) {
             }
         }
     }
-    return { props: {username:false,organization:false} };
+    return { props: {username:false,Organization:false} };
 };

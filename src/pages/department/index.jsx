@@ -40,7 +40,7 @@ export default  function Employee( {username, created} )
                 <></>
             }
             <form action='/api/departments' method='POST'>
-   <h3>Register organization structure </h3>
+   <h3>Register Organization structure </h3>
     <label htmlFor="Level_name">Employee Position</label> <input type="text" name="Level_name" id="Level_name"></input><br></br>
     <label htmlFor="Level_Department">Department Name</label> <input type="text" name="Level_Department" id="Level_Department"></input><br></br>
     <label htmlFor="Parent_department">
@@ -80,7 +80,7 @@ export async function getServerSideProps(context) {
     //     return {
     //         redirect: {
     //             permanent: false,
-    //             destination: "/account/employee"
+    //             destination: "/profile/employee"
     //         }
     //     }
     // }
