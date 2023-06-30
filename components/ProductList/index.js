@@ -18,7 +18,7 @@ export default function ProductList() {
           <li key={product._id}>
             <button
               type="button"
-              onClick={() => router.push(`/${product._id}`)}
+              onClick={() => router.push(`/${product._id}`)}  class="btn btn-outline-success btn-xs"
             >
               {product.name}
             </button>

@@ -1,5 +1,7 @@
 import useSWR from "swr";
 import { useRouter } from "next/router";
+import { StyledButton } from "../Button/Button.styled";
+import Comments from "../Comments";
 import { useState } from "react";
 import ProductForm from "../ProductForm";
 
@@ -30,6 +32,6 @@ export default function Product({ onSubmit, onDelete }) {
       <button type="button" onClick={() => { setIsEditMode(!isEditMode) }}>Toggle editmode</button>
       <button type="button" onClick={() => { onDelete(id) }}>Delete product</button>
       {isEditMode && <ProductForm onSubmit={onSubmit}/>}
-    </>
+      </>
   );
 }
