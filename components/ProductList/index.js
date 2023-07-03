@@ -12,18 +12,20 @@ export default function ProductList() {
 
   return (
     <>
-      <h2>Available Fishes</h2>
+      <h3>Department staff Evaluation</h3>
       <ul>
-        {data.map((product) => (
-          <li key={product._id}>
+        {data.employees.map((emp)=>
+          
+          <li key={emp._id}>
             <button
               type="button"
-              onClick={() => router.push(`/${product._id}`)}  class="btn btn-outline-success btn-xs"
+              onClick={() => router.push(`/${emp._id}`)}  class="btn btn-outline-success btn-xs"
             >
-              {product.name}
+              {emp.username}
             </button>
           </li>
-        ))}
+          )
+        }
       </ul>
     </>
   );

@@ -28,5 +28,8 @@
     "react-google-charts": "^4.0.0",
     "react-plotly.js": "^2.6.0",
     "swr": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.6"
   }
 }
