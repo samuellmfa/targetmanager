@@ -12,84 +12,46 @@ export default async function handler(request, response) {
     const months = await Month.find({"Organization":cookies.get('Organization')});
     const departments = await Department.find({"Organization":cookies.get('Organization')});
 
-    const we =new Month({
-      "Month_target": " ",
-      "Weight": 3,
-      "Organization": "jadenbaba",
-      "username": "samuel",
-      "Perspective": "Financial",
-      "isActive": "true",
-      "Parent_plan": "mabila",
-      "EvaluationResult": 20,
-      "Evaluation": 1,
-      "Year_target_id":"",
-      "Weekone_plan": 'false',
-      "Weektwo_plan": 'false',
-      "Weekthree_plan": 'false',
-      "Weekfour_plan": 'false',
-      "Weekone_report": 0,
-      "Weektwo_report": 0,
-      "Weekthree_report": 0,
-      "Weekfour_report": 0,
-    
-    });
-
-    months.push(we)
-
     //const department = new Department({"Level_name":cookies.get('Organization')},{"Parent_department":cookies.get('Organization')},);
     //  departments.push(department)
     return response.status(200).json(months);
   }
-  if (request.method === "POST") {
 
-    try {
-    //   const cookies = new Cookies(request, response)
-    //   const departments = await Department.find({"Organization":cookies.get('Organization')});
+
+
   
-     const month =new Month({
-        "Month_target": " ",
-        "Weight": 3,
-        "Organization": "jadenbaba",
-        "username": "samuel",
-        "Perspective": "Financial",
-        "isActive": "true",
-        "Parent_plan": "mabila",
-        "EvaluationResult": 20,
-        "Evaluation": 1,
-        "Year_target_id":"",
-        "Weekone_plan": 'false',
-        "Weektwo_plan": 'false',
-        "Weekthree_plan": 'false',
-        "Weekfour_plan": 'false',
-        "Weekone_report": 0,
-        "Weektwo_report": 0,
-        "Weekthree_report": 0,
-        "Weekfour_report": 0,
+  if (request.method === "PUT") {
+    try {
+      const updatedRows = request.body; // Extract the array of updated rows from the request body
+  
+      // Iterate over the updated rows and update each row individually
       
-      });
-
-      //the end
-      await month.save();
-      return response.status(201).json({ status: "month created." });
+        // Find the Month document by ID and update its properties
+        const updatedMonth = await Month.findByIdAndUpdate(
+          _id,
+          {
+            Month_target,
+            Weight,
+            Organization,
+            username,
+            Evaluation,
+            Weektwo_evaluationResult,
+          },
+          { new: true } // Return the updated document
+        );
+  
+        return updatedMonth;
+  
+      // Wait for all the updates to complete
+      const updatedMonths = await Promise.all(updatedMonthPromises);
+  
+      response.json(updatedMonths); // Respond with the array of updated Month documents
+      response.redirect("/weekly")
     } catch (error) {
       console.error(error);
-      return response.status(400).json({ error: error.message });
+      response.status(500).json({ error: "Internal server error" });
+     
     }
-  }
-  else if (request.method === "DELETE") {
-   
-   try{
-   // const id= request.body.id;
-    const _id= "649eb2399b776f11ec92ef9e";
-    //await Target.findByIdAndDelete(id)
-    const cinema = await Target.findByIdAndDelete(_id);
-   // await Target.findByIdAndDelete('649eb2399b776f11ec92ef9e')
-   response.status(200).json({ status: "Product successfully deleted." });
-   } 
-   catch{
-    
-    return response.status(400).json({ error: "not here" });
-   }
     
   }
 }

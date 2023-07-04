@@ -134,7 +134,7 @@ export default  function Employee( {username, created} )
  {data.map((tar, index) => (
     <tr key={tar._id}>
         <td>
-        <textarea id="story" name="story" rows="5" cols="33">{tar.Year_target}</textarea>
+        <textarea id={tar._id} name={tar._id} rows="5" cols="33">{tar.Year_target}</textarea>
         </td>
         <td>
         <label htmlFor="name">{tar.Weight}</label>

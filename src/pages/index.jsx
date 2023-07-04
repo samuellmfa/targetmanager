@@ -48,9 +48,9 @@ export default function HomePage( {username,Organization} ) {
             <div>
             {username ?
          <>
-         <a href="/target" target="_self"rel="noopener noreferrer"><p> Your {Organization} target Plan&nbsp;</p></a>
+         <a href="/target" target="_self"rel="noopener noreferrer"><p> Your {Organization} target Planning&nbsp;</p></a>
          <a href="/month" target="_self"rel="noopener noreferrer"><p> Your {Organization} Monthly Plan&nbsp;</p></a>
-         <a href="/weekly" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Plan&nbsp;</p></a>
+         <a href="/weekly" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Evaluation&nbsp;</p></a>
          </>
         : 
         <>

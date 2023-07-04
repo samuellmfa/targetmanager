@@ -7,141 +7,178 @@ import { useRouter } from "next/router";
 import 'bootstrap/dist/css/bootstrap.css';
 import ProductList from '../../../components/ProductList';
 import React, { useState } from "react";
+import { uid } from 'uid';
 export default  function Employee( {username, created} )
 {
-    const router = useRouter();
-    const { id } = router.query
-    const { data, error, isLoading, isValidating, mutate } = useSWR("/api/months");
-    console.log("data :",data)
-    const handleClick = (targetId) => {
-    mutate();
-  };
-
-    if (!data) return;
-   
-    if (isLoading) {
-      return <h1>Loading...</h1>;
-    }
-    async function handleAddClick(event) {
-        event.preventDefault();
-     
-        // const formData = new FormData(event.target);
-        // const productData = Object.fromEntries(formData);
-    
-        const response = await fetch("/api/months", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(),
-        });
-    
-        if (response.ok) {
-          await response.json();
-          mutate();
-        } else {
-          console.error(response.status);
-        }
-      }
-    //   async function handleDeleteTarget(event) {
-    //     event.preventDefault();
-    //      console.log(event.target.value)
-    //     // const formData = new FormData(event.target);
-    //     // const productData = Object.fromEntries(formData);
-    //      const id = event.target.value;
-    //      console.log(event.target.dataset.id)
-    //     const response = await fetch("/api/targets/crud/", {
-    //       method: "DELETE",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(id),
-    //     });
-    
-    //     if (response.ok) {
-    //       await response.json();
-    //       mutate();
-    //     } else {
-    //       console.error(response.status);
-    //     }
-    //   }
-    const handleDeleteTarget= async (id) =>{
-      console.log(id)
-     const response = await fetch(`/api/targets/deleteUpdate/${id}`, {
-             method: "DELETE"
-           });
-             
-           if (response.ok) {
-               await response.json();
-               mutate();
-             } else {
-               console.error(response.status);
-             }
-   }
   
+  const router = useRouter();   
+  
+  const [formData, setFormData] = useState({
+    // Initialize form data
+    _id: "",
+    Month_target: "",
+    Weight: "",
+    Organization: "",
+    username: "",
+    Evaluation: "",
+    Weektwo_evaluationResult: "",
+    Year_target_id: "",
+  });
+  const { id } = router.query
+  const { data, error, isLoading, isValidating, mutate } = useSWR("/api/weeks");
+  console.log("load data :",data)
+
+  if (!data) return;
  
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+
+
+
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   console.log("this is the form data",  formData);
+ 
+  //   try {
+  //     const response = await fetch(`/api/weekly/update/${id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     if (response.ok) {
+  //       // Handle successful response
+  //       console.log("PUT request successful");
+  //       // Redirect to the desired page
+  //       router.push("/weekly");
+  //     } else {
+  //       // Handle error response
+  //       console.error("PUT request failed");
+  //     }
+  //   } catch (error) {
+  //     // Handle network error or other exceptions
+  //     console.error(error);
+  //   }
+  // };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+  
+    // Extract the values from the form
+    const form = event.target;
+    const formData = new FormData(form);
+  
+    // Convert the form data to an object
+    const formValues = {};
+    for (let [key, value] of formData.entries()) {
+      formValues[key] = value;
+    }
+  
+    // Send the form values to the server using an AJAX request or fetch API
+    fetch('/api/weekly/', {
+      method: 'PUT',
+      body: JSON.stringify(formValues),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          // Handle the successful response
+          console.log('Form submitted successfully!');
+        } else {
+          // Handle errors
+          console.log('Form submission failed.');
+        }
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error:', error);
+      });
+  }
+  
     return (
         
-        <Layout pageTitle="month">
+           <Layout pageTitle="month">
             <Link href="/">Home</Link><br/>
- 
-            <h3>Evaluate the your weekly tasks</h3>
-            <form action='/api/weekly/evaluation' method='POST'>
- <table border={1}>
- {data.map((mon, index) => (
-    <tr key={mon._id}>
-        <td>
-        <textarea id="story" name="story" rows="5" cols="33">{mon.month_Target}</textarea>
-        </td>
-       
-       <td>
-        Evaluate
-       </td>
-         <td>
-        <label htmlFor="name">{mon.Weight}</label>
-        </td>     
-         <td>
-                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                              <div class="form-check">
-                                  <div className="btn-group-toggle" data-toggle="buttons">
-                                  <div class="btn-group mr-2" role="group" aria-label="First group">
-                                         <input type="checkbox" className="btn-check btn-xs" value={mon.Weekone_plan} id={mon._id} name={mon._id}  onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekone_plan ? 'active' : ''}`}  value={mon.Weekone_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weekone_plan}>0%</label>
-                                       
-                                         <input type="checkbox" className="btn-check btn-xs" value={mon.Weektwo_plan} id={mon._id} name={mon._id}  onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weektwo_plan ? 'active' : ''}`} value={mon.Weektwo_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weektwo_plan}>25%</label>
-                                         
-                                         <input type="checkbox" className="btn-check btn-xs" value={mon.Weekthree_plan} id={mon._id} name={mon._id}  onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekthree_plan ? 'active' : ''}`} value={mon.Weekthree_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weekthree_plan}>50%</label>
-                                        
-                                         <input type="checkbox" className="btn-check btn-xs" value={mon.Weekfour_plan} id={mon._id} name={mon._id} onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekfour_plan ? 'active' : ''}`} value={mon.Weekfour_plan} id={mon._id} name={mon._id}  htmlFor={mon._id} aria-pressed={mon.Weekfour_plan}>75%</label>
+            
+            <h3>Evaluate Your Weekly Tasks</h3>
+            <form action={`/api/weekly`} method="PUT">
 
-                                         <input type="checkbox" className="btn-check btn-xs" value={mon.Weekfour_plan} id={mon._id} name={mon._id} onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekfour_plan ? 'active' : ''}`} value={mon.Weekfour_plan} id={mon._id} name={mon._id}  htmlFor={mon._id} aria-pressed={mon.Weekfour_plan}>100%</label>
-                                      
-                                      </div>
-                                    </div>
-                                    </div>
-                        </div>
-          </td>
-        <td>
-        <button onClick={handleAddClick} class="btn btn-outline-success btn-xs">+</button>
-        <button type="button" onClick={()=>handleDeleteTarget(tar._id)} class="btn btn-outline-success btn-xs">-</button>
-        <button type="button" onClick={()=>handleDeleteTarget(tar._id)} class="btn btn-outline-success btn-xs">Details</button>
-        </td>
+            <table border={1}>
+  {data.map((mon, index) => (
+    <tr key={mon._id}>
+      <td>
+        <textarea id={mon._id} name={mon._id} rows="5" cols="33">
+          {mon.Month_target}
+        </textarea>
+      </td>
+
+      <td>Evaluate</td>
+
+      <td>
+        <label htmlFor="weight">{mon.Weight}</label>
+      </td>
+
+      <td>
+        <div
+          key={`BTN-${mon._id}`}
+          className="btn-group"
+          role="group"
+          aria-label="Basic radio toggle button group"
+        >
+         
+         <React.Fragment>
+  <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+    <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`zero${mon._id}`} autoComplete="off" value="0"    data-val = "0" defaultChecked/>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.zero === 0 ? 'active' : ''}`} htmlFor={`zero${mon._id}`}>0%</label>
+
+    <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`twentyfive${mon._id}`} autoComplete="off" value="25"   data-val = "25" />
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.twentyfive === 25 ? 'active' : ''}`} htmlFor={`twentyfive${mon._id}`}>25%</label>
+
+    <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`fifty${mon._id}`} autoComplete="off" value="50"    data-val = "50"/>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.fifty === 50 ? 'active' : ''}`} htmlFor={`fifty${mon._id}`}>50%</label>
+
+    <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`seventyfive${mon._id}`} autoComplete="off" value="75"    data-val = "75"/>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.seventyfive === 75 ? 'active' : ''}`} htmlFor={`seventyfive${mon._id}`}>75%</label>
+
+    <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`hundred${mon._id}`} autoComplete="off" value="100"    data-val = "100"/>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.hundred === 100 ? 'active' : ''}`} htmlFor={`hundred${mon._id}`}>100%</label>
+  </div>
+</React.Fragment>
+
+        </div>
+      </td>
+
+      <td>{/* Add your other form elements here */}</td>
     </tr>
-    ))}
- </table>
- <br></br><br></br><br></br>
- <input type="submit" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
-    </form>
+  ))}
+</table>
+
+
+<br /><br /><br />
+
+<input type="submit" value="Evaluate weeky tasks" className="btn btn-outline-success btn-xs" />
+</form>
+   
+
     <ProductList/>
 
     </Layout>
     );
 }
-
 export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
@@ -149,13 +186,5 @@ export async function getServerSideProps(context) {
     var Organization = getCookie('Organization', { req, res });
     var IsEmployee = getCookie('IsEmployee', { req, res });
     console.log(Organization,username,IsEmployee)
-    // if (username != undefined){
-    //     return {
-    //         redirect: {
-    //             permanent: false,
-    //             destination: "/profile/employee"
-    //         }
-    //     }
-    // }
     return { props: {username:false} };
 };

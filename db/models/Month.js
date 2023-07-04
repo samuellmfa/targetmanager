@@ -6,12 +6,39 @@ const { Schema } = mongoose;
 const monthSchema = new Schema({
     Month_target: { type: String, required: true },
     Weight: { type: Number, required: false },
-    Organization: { type: String, required: true },
-    username: { type: String, required: true },
+    Organization: { type: String, required: false },
+    username: { type: String, required: false },
     IsActive: { type: Boolean, required: false },
-    Evaluation:  { type: Number, required: true },
-    EvaluationResult: { type: Number, required: true },
-    Year_target_id:{ type: String, required: true },
+    Evaluation:  { type: Number, default: 0 },
+    evaluationResult: { type: Number, default: 0 },
+    evaluationone : {
+       zero: { type: Number, default: 0 },
+       twentyfive:{ type: Number, default: 0 },
+       fifty:{ type: Number, default: 0 },
+       seventyfive:{ type: Number, default: 0 },
+       hundred: { type: Number, default: 0 }
+       },
+    evaluationtwo : {
+       zero: { type: Number, default: 0 },
+       twentyfive:{ type: Number, default: 0 },
+       fifty:{ type: Number, default: 0 },
+       seventyfive:{ type: Number, default: 0 },
+       hundred: { type: Number, default: 0 }
+        },
+   evaluationthree : {
+       zero: { type: Number, default: 0 },
+       twentyfive:{ type: Number, default: 0 },
+       fifty:{ type: Number, default: 0 },
+       seventyfive:{ type: Number, default: 0 },
+       hundred: { type: Number, default: 0 }
+       },
+    evaluationthree : {
+        zero: { type: Number, default: 0 },
+        twentyfive:{ type: Number, default: 0 },
+        fifty:{ type: Number, default: 0 },
+        seventyfive:{ type: Number, default: 0 },
+        hundred: { type: Number, default: 0 }
+        },
     Weekone_plan: { type: Boolean, default: false },
     Weektwo_plan: { type: Boolean, default: false },
     Weekthree_plan: { type: Boolean, default: false },
