@@ -15,50 +15,10 @@ export default  function Employee( {username, created} )
     const { data, error, isLoading, isValidating, mutate } = useSWR("/api/targets");
     console.log("data :",data)
 
-//     const initialCheckboxValues = data?.map((tar) =>
-//   tar.employees.map((emp) => ({
-//     id: `${tar._id}-${emp._id}`,
-//     values: [
-//       emp.Jan,
-//       emp.Feb,
-//       emp.Mar,
-//       emp.Apr,
-//       emp.May,
-//       emp.Jun,
-//       emp.Jul,
-//       emp.Aug,
-//       emp.Sep,
-//       emp.Oct,
-//       emp.Nov,
-//       emp.Dec,
-//     ],
-//   }))
-// );
-
-// const [checkboxValues, setCheckboxValues] = useState(initialCheckboxValues);
-  
-
-//   const handleCheckboxChange = (targetId) => {
-//     // Find the checkbox in the array
-//     const updatedCheckboxValues = checkboxValues.map((tar) =>
-//       tar.map((emp) =>
-//         emp.id === targetId ? { ...emp, checked: !emp.checked } : emp
-//       )
-//     );
-
-//     // Update the state with the new checkbox values
-//     setCheckboxValues(updatedCheckboxValues);
-//   };
-
+//     const 
   const handleClick = (targetId) => {
     mutate();
   };
-  
-  
-  
-  
-  
-  
 
     if (!data) return;
    
@@ -68,9 +28,6 @@ export default  function Employee( {username, created} )
     async function handleAddClick(event) {
         event.preventDefault();
      
-        // const formData = new FormData(event.target);
-        // const productData = Object.fromEntries(formData);
-    
         const response = await fetch("/api/targets/crud", {
           method: "POST",
           headers: {
@@ -86,28 +43,7 @@ export default  function Employee( {username, created} )
           console.error(response.status);
         }
       }
-    //   async function handleDeleteTarget(event) {
-    //     event.preventDefault();
-    //      console.log(event.target.value)
-    //     // const formData = new FormData(event.target);
-    //     // const productData = Object.fromEntries(formData);
-    //      const id = event.target.value;
-    //      console.log(event.target.dataset.id)
-    //     const response = await fetch("/api/targets/crud/", {
-    //       method: "DELETE",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(id),
-    //     });
-    
-    //     if (response.ok) {
-    //       await response.json();
-    //       mutate();
-    //     } else {
-    //       console.error(response.status);
-    //     }
-    //   }
+   
     const handleDeleteTarget= async (id) =>{
       console.log(id)
      const response = await fetch(`/api/targets/deleteUpdate/${id}`, {
@@ -121,7 +57,19 @@ export default  function Employee( {username, created} )
                console.error(response.status);
              }
    }
-  
+   const handleUpdateTarget= async (id,Jan,Feb,Mar,Apr) =>{
+    console.log(id,Jan,Feb,Mar,Apr)
+   const response = await fetch(`/api/targets/deleteUpdate/${id}`, {
+           method: "DELETE"
+         });
+           
+         if (response.ok) {
+             await response.json();
+             mutate();
+           } else {
+             console.error(response.status);
+           }
+ }
  
     return (
         
@@ -129,7 +77,7 @@ export default  function Employee( {username, created} )
             <Link href="/">Home</Link><br/>
  
             <h3>Plan your annual tasks</h3>
-            <form action='/api/profiles/employee' method='POST'>
+            <form action='' method='POST'>
  <table border={1}>
  {data.map((tar, index) => (
     <tr key={tar._id}>
@@ -159,7 +107,7 @@ export default  function Employee( {username, created} )
                                   <div className="btn-group-toggle" data-toggle="buttons">
                                    <div class="btn-group mr-2" role="group" aria-label="First group">
                                          <input type="checkbox" className="btn-check btn-xs" value={emp.Jan} id={"Jan" + tar._id + emp._id + "Jan"} name={"Jan" + tar._id + emp._id + "Jan"}  onChange={() => handleClick(`Jan${tar._id}${emp._id}Jan`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${emp.Jan ? 'active' : ''}`} id={"Jan" + tar._id + emp._id + "Jan"} name={"Jan" + tar._id + emp._id + "Jan"} htmlFor={"Jan" + tar._id + emp._id + "Jan"} aria-pressed={emp.Nov}>Jan</label>
+                                         <label className={`btn btn-outline-success btn-xs ${emp.Jan ? 'active' : ''}`} id={"Jan" + tar._id + emp._id + "Jan"} name={"Jan" + tar._id + emp._id + "Jan"} htmlFor={"Jan" + tar._id + emp._id + "Jan"} >Jan</label>
                                        
                                          <input type="checkbox" className="btn-check btn-xs" value={emp.Feb} id={"Feb" + tar._id + emp._id + "Feb"} name={"Feb" + tar._id + emp._id + "Feb"}  onChange={() => handleClick(`Feb${tar._id}${emp._id}Feb`)}/>
                                          <label className={`btn btn-outline-success btn-xs ${emp.Feb ? 'active' : ''}`} value={emp.Feb} id={"Feb" + tar._id + emp._id + "Feb"} name={"Feb" + tar._id + emp._id + "Feb"} htmlFor={"Feb" + tar._id + emp._id + "Feb"}>Feb</label>
@@ -199,7 +147,6 @@ export default  function Employee( {username, created} )
                                        </div>
                                   </td>
                                   <td>
-                                 
                                   </td>
                                   </tr>
                                   </>
@@ -210,12 +157,13 @@ export default  function Employee( {username, created} )
         <td>
         <button onClick={handleAddClick} class="btn btn-outline-success btn-xs">+</button>
         <button type="button" onClick={()=>handleDeleteTarget(tar._id)} class="btn btn-outline-success btn-xs">-</button>
+        
         </td>
     </tr>
     ))}
  </table>
  <br></br><br></br><br></br>
- <input type="submit" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
+ <input type="" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
     </form>
     <ProductList/>
 
@@ -230,13 +178,5 @@ export async function getServerSideProps(context) {
     var Organization = getCookie('Organization', { req, res });
     var IsEmployee = getCookie('IsEmployee', { req, res });
     console.log(Organization,username,IsEmployee)
-    // if (username != undefined){
-    //     return {
-    //         redirect: {
-    //             permanent: false,
-    //             destination: "/profile/employee"
-    //         }
-    //     }
-    // }
     return { props: {username:false} };
 };

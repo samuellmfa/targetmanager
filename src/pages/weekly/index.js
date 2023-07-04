@@ -36,36 +36,6 @@ export default  function Employee( {username, created} )
 
 
 
-
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   console.log("this is the form data",  formData);
- 
-  //   try {
-  //     const response = await fetch(`/api/weekly/update/${id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     if (response.ok) {
-  //       // Handle successful response
-  //       console.log("PUT request successful");
-  //       // Redirect to the desired page
-  //       router.push("/weekly");
-  //     } else {
-  //       // Handle error response
-  //       console.error("PUT request failed");
-  //     }
-  //   } catch (error) {
-  //     // Handle network error or other exceptions
-  //     console.error(error);
-  //   }
-  // };
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({

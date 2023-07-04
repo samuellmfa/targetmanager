@@ -12,29 +12,7 @@ export default async function handler(request, response) {
     const months = await Month.find({"Organization":cookies.get('Organization')});
     const departments = await Department.find({"Organization":cookies.get('Organization')});
 
-    const mon =new Month({
-      "Month_target": " ",
-      "Weight": 3,
-      "Organization": "jadenbaba",
-      "username": "samuel",
-      "Perspective": "Financial",
-      "isActive": "true",
-      "Parent_plan": "mabila",
-      "EvaluationResult": 20,
-      "Evaluation": 1,
-      "Year_target_id":"",
-      "Weekone_plan": 'false',
-      "Weektwo_plan": 'false',
-      "Weekthree_plan": 'false',
-      "Weekfour_plan": 'false',
-      "Weekone_report": 0,
-      "Weektwo_report": 0,
-      "Weekthree_report": 0,
-      "Weekfour_report": 0,
-    
-    });
-
-    months.push(mon)
+   
 
     //const department = new Department({"Level_name":cookies.get('Organization')},{"Parent_department":cookies.get('Organization')},);
     //  departments.push(department)

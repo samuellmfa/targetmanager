@@ -44,28 +44,7 @@ export default  function Employee( {username, created} )
           console.error(response.status);
         }
       }
-    //   async function handleDeleteTarget(event) {
-    //     event.preventDefault();
-    //      console.log(event.target.value)
-    //     // const formData = new FormData(event.target);
-    //     // const productData = Object.fromEntries(formData);
-    //      const id = event.target.value;
-    //      console.log(event.target.dataset.id)
-    //     const response = await fetch("/api/targets/crud/", {
-    //       method: "DELETE",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(id),
-    //     });
-    
-    //     if (response.ok) {
-    //       await response.json();
-    //       mutate();
-    //     } else {
-    //       console.error(response.status);
-    //     }
-    //   }
+   
     const handleDeleteTarget= async (id) =>{
       console.log(id)
      const response = await fetch(`/api/targets/deleteUpdate/${id}`, {
