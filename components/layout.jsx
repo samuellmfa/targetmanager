@@ -7,6 +7,7 @@ export default function Layout({ pageTitle, children }) {
   return (
     <div>
       <Head>
+        
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta
           name="description"

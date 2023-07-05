@@ -23,7 +23,7 @@ export default async function handler(request, response) {
       departmentData.Organization =cookies.get('Organization');
       const department = new Department(departmentData);
       await department.save();
-      return response.status(201).json({ status: "department created." });
+      response.redirect("/department");
     } catch (error) {
       console.error(error);
       return response.status(400).json({ error: error.message });

@@ -4,6 +4,14 @@ import { getCookie } from 'cookies-next';
 import Link from 'next/link'
 import useSWR from "swr";
 import { useRouter } from "next/router";
+import { Chart } from 'react-google-charts';
+import Titlebar from '../component/Menu/titlebar';
+import _footer from '../component/Footer/footer';
+export const chart_data = [];
+
+export const options = {
+  allowHtml: true,
+};
 export default  function Employee( {username, created} )
 {
     const router = useRouter();
@@ -15,39 +23,137 @@ export default  function Employee( {username, created} )
     if (isLoading) {
       return <h1>Loading...</h1>;
     }
-
+    data.map((dept) => chart_data.push([dept.Level_name, dept.Parent_department, ""]));
     return (
         
-        <Layout pageTitle="employee">
-            <Link href="/">Home</Link><br/>
-            {msg ?
-                <h3 className="red">{msg}</h3>
-            :
-                <></>
-            }
-            <h3>Employee's Account Registration</h3>
-            <form action='/api/profiles/employee' method='POST'>
-   <h3>Create employee Account </h3>
-    <label htmlFor="name">Full name</label> <input type="text" name="name" id="name"></input><br></br>
-    <label htmlFor="Title">Job Title</label> <input type="text" name="Title" id="Title"></input><br></br>
-    <label htmlFor="Department">
-       Department:
-          <select id="Department" name="Department">
+      <Layout pageTitle="employee">
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Titlebar />
+
+    <section className="vh-100">
+        <div className="container-fluid h-custom">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-md-9 col-lg-6 col-xl-5">
+              <Chart
+                chartType="OrgChart"
+                data={chart_data}
+                options={options}
+                width="100%"
+                height="100%"
+              />
+            </div>
+            <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form
+                 action='/api/profiles/employee' method='POST'
+                className="border border-primary rounded p-4"
+              >
+                <div>
+                  {msg ? (
+                    <h3 className="red">{msg}</h3>
+                  ) : (
+                    <> Add Employee</>
+                  )}
+                </div>
+
+                <div className="divider d-flex align-items-center my-4"></div>
+
+                <div className="form-outline mb-4">
+                  <input
+                    minLength="3"
+                    name="name"
+                    id="name"
+                    type="text"
+                    className="form-control form-control-lg"
+                    placeholder="Employee Full Name"
+                    required
+                  />
+                </div>
+
+                <div className="form-outline mb-3">
+                  <input
+                    type="text"
+                    name="Title"
+                    id="Title"
+                    className="form-control form-control-lg"
+                    placeholder="Job Title or Position"
+                    minLength="5"
+                    required
+                  />
+                </div>
+                <br />
+                <br></br>
+                   
+               
+                <div className="d-flex justify-content-between align-items-center">
+                  <div className="form-check mb-0">
+                    <label
+                      className="form-check-label"
+                      htmlFor="Parent_department"
+                    >
+                      Department:
+                      <select id="Department" name="Department">
           {data.map((dept) => (
             <option value={dept.Level_name} key={dept._id}>
               {dept.Level_name}
           </option>
         ))}
           </select>
-        </label> <br></br><br></br>
-    <label htmlFor="IsHead">Is the Head of the department</label> <input type="checkbox" name="IsHead" id="IsHead"></input><br></br><br></br>
-    <label htmlFor="username">username</label> <input type="text" name="username" id="username"></input><br></br>
-    <label htmlFor="password">password</label>  <input minLength="5" name="password" id="password" type="password" placeholder='password' required></input><br/><br></br>
-    <label htmlFor="passwordagain">confirm</label><input minLength="5" name="passwordagain" id="passwordagain" type="password" placeholder='password again' required></input><br/>
-    <input type="submit" value="Create Account"/>
-    </form>
+                    </label>
+                  </div>
+                </div>
+                <br />
+                <label htmlFor="IsHead"  className="form-check-label">Is the Head of the department</label> <input type="checkbox" name="IsHead" id="IsHead" value="" className="form-check-input me-2"></input><br></br><br></br>
+
+                <div className="form-outline mb-4">
+                <input  minLength="3" name="username" id="username" type="text"  className="form-control form-control-lg" placeholder="Enter a valid email address" required />
+                <label className="form-label" htmlFor="username">Email address</label>
+              </div>
+
+              <div className="form-outline mb-3">
+                <input type="password" id="password" className="form-control form-control-lg"
+                  placeholder="Enter password"   minLength="5" name="password" required/>
+                <label className="form-label" htmlFor="password">Password</label>
+              </div>
+
+              <div className="form-outline mb-3">
+                <input type="password" id="passwordagain" className="form-control form-control-lg"
+                  placeholder="Confirm Password"   minLength="5" name="passwordagain" required/>
+                <label className="form-label" htmlFor="passwordagain">Confirm Password</label>
+              </div>
+
+                <div className="text-center text-lg-start mt-4 pt-2">
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-lg"
+                    style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}
+                  >
+                    Create
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
+
+
+
+
+
+
+
+
+
+
+    <_footer />
     </Layout>
     );
 }

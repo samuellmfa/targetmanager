@@ -1,14 +1,25 @@
 import Layout from '../../components/layout'
 import { getCookie } from 'cookies-next';
+import Titlebar from './component/Menu/titlebar';
+import _footer from './component/Footer/footer';
 import Link from 'next/link'
 import clientPromise from "../../lib/mongodb";
 
 export default function ProfilePage( {username, created} ) {
     return (
         <Layout pageTitle="Profile">
-            <Link href="/">Home</Link><br/>
+             <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Titlebar />
             <h2>{username}'s Profile</h2>
             <p>Account created at <strong>{created}</strong></p>
+
+            <_footer/>
         </Layout>
     );
 }
