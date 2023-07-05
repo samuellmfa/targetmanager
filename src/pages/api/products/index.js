@@ -1,11 +1,12 @@
 import dbConnect from "../../../../db/connect";
 import Product from "../../../../db/models/Product";
+import Target from "../../../../db/models/Target";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
-    const products = await Product.find();
+    const products = await Target.findOne();
    
     return response.status(200).json(products);
   }

@@ -174,10 +174,14 @@ input[type=text],input[type=password] {
   text-align: center;
 }
 
-input[type=text]:focus,input[type=password]:focus {
-  border-color: var(--dark-accent);
+button:focus,
+input[type="submit"]:focus {
+  outline: none;
 }
-
+button:focus,
+input[type="submit"]:focus {
+  border-color: var(--primary);
+}
 .red {
   font-weight: bold;
   color: var(--red);

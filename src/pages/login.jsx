@@ -10,11 +10,11 @@ export default function LoginPage( {username,Organization} ) {
         <Layout pageTitle="Login">
             <Link href="/">Home</Link><br/>
             {msg ?
-                <h3 className="red">{msg}</h3>
+                <strong className="red"><i>{msg}</i></strong>
             :
                 <></>
             }
-            <h2>Log in</h2>
+            <strong>Log in</strong>
             <form action='/api/login' method='POST'>
                 <input minLength="3" name="username" id="username" type="text" placeholder='username' required></input><br/>
                 <input minLength="5" name="password" id="password" type="password" placeholder='password' required></input><br/>
