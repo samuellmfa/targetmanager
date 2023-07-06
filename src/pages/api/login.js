@@ -19,7 +19,8 @@ export default async function handler(req, res) {
         const cookies = new Cookies(req, res)
         cookies.set('username', username)
         cookies.set('Organization', user.Organization)
-        res.redirect("/")
+        cookies.set('chart', "somedata")
+        res.redirect("/performance")
     } else {
         res.redirect("/login?msg=Incorrect username or password")
     }

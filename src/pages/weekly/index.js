@@ -91,10 +91,11 @@ export default  function Employee( {username, created} )
 <br />
 <br />
 <br />
-<Titlebar />
+<Titlebar  username={username}/>
+
             
             <h2>Evaluate Your Weekly Tasks</h2>
-            <form action={`/api/weekly`} method="PUT">
+            <form action="" method="PUT">
 
             <table border={1}  class="table table-bordered">
   {data.map((mon, index) => (
@@ -149,7 +150,7 @@ export default  function Employee( {username, created} )
 
 <br /><br /><br />
 
-<input type="submit" value="Evaluate weeky tasks" className="btn btn-outline-success btn-xs" />
+<input type="" value="Evaluate weeky tasks" className="btn btn-outline-success btn-xs" />
 </form>
    
 
@@ -166,5 +167,5 @@ export async function getServerSideProps(context) {
     var Organization = getCookie('Organization', { req, res });
     var IsEmployee = getCookie('IsEmployee', { req, res });
     console.log(Organization,username,IsEmployee)
-    return { props: {username:false} };
+    return { props: {Organization,username}, };
 };

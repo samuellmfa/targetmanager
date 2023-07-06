@@ -72,11 +72,12 @@ export default  function Employee( {username, created} )
 <br />
 <br />
 <br />
-<Titlebar />
+<Titlebar  username={username}/>
+
  
             <h3><strong>Plan Your Monthly Tasks</strong></h3>
  
-            <form action='/api/profiles/employee' method='POST'>
+            <form action='' method='POST'>
             <table border={1}  class="table table-bordered table-striped">
 
  {data.map((mon, index) => (
@@ -118,7 +119,7 @@ export default  function Employee( {username, created} )
     ))}
  </table>
  <br></br><br></br><br></br>
- <input type="submit" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
+ <input type="" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
     </form>
     <ProductList/>
     <_footer/>
@@ -141,5 +142,5 @@ export async function getServerSideProps(context) {
     //         }
     //     }
     // }
-    return { props: {username:false} };
+    return { props: {Organization,username}, };
 };

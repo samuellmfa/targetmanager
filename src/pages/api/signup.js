@@ -44,7 +44,8 @@ export default async function handler(req, res) {
     cookies.set('username', username)
     cookies.set('Organization', Organization)
     cookies.set('IsEmployee', IsEmployee)
-    res.redirect("/")
+    cookies.set('chart', "empty")
+    res.redirect("/performance")
   } 
   else {
     res.redirect("/signup?msg=An Organization with this name not registered correctly");

@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import TargetForm from '../../../components/TargetForm';
 import ProductList from '../../../components/ProductList';
 import React, { useState } from "react";
+import { now } from 'mongoose';
 export default  function Employee( {username, created} )
 {
     const router = useRouter();
@@ -83,7 +84,8 @@ export default  function Employee( {username, created} )
 <br />
 <br />
 <br />
-<Titlebar />
+<Titlebar  username={username}/>
+
  
             <h3><strong>Plan Your Annual Tasks</strong></h3>
             <form action='' method='POST' class="form-group">
@@ -196,5 +198,5 @@ export async function getServerSideProps(context) {
     var Organization = getCookie('Organization', { req, res });
     var IsEmployee = getCookie('IsEmployee', { req, res });
     console.log(Organization,username,IsEmployee)
-    return { props: {username:false} };
+    return { props: {Organization,username}, };
 };

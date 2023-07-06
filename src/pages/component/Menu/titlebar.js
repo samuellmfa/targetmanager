@@ -10,10 +10,22 @@ export default function Titlebar( {username,Organization} )
 
     return  (  
       <header>
-      <h1 id="nav-title"><a href="/"><div><b><i>PERFORMANCE EVALUATION</i></b><br /><h3><strong>________</strong></h3></div></a></h1>
+
+{username ?
+        <>
+           <h1 id="nav-title"><a href="/performance"><div><b><i>PERFORMANCE EVALUATION</i></b><br /><h3><strong>________</strong></h3></div></a></h1>
+        </>: 
+        <>
+           <h1 id="nav-title"><a href="/"><div><b><i>PERFORMANCE EVALUATION</i></b><br /><h3><strong>________</strong></h3></div></a></h1>
+        </>
+        }
+
+
+
+      
       <nav>
          <ul>
-             <li><a href="#">Your Performance</a></li>
+             <li><a href="/performance">Your Performance</a></li>
              <li><a href="#">Orgn service</a></li>
         {username ?
 

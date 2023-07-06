@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Chart } from "chart.js";
-export default function Barchart( { Organization,username}) {
+export default function Barchart() {
     useEffect(() => {
         var ctx = document.getElementById('myChart2').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -41,7 +41,7 @@ export default function Barchart( { Organization,username}) {
     return (
         <>
            
-            <strong className="w-[150px] mx-auto mt-10 text-xl font-semibold capitalize ">{username}'s performance</strong> <br></br>
+            <strong className="w-[150px] mx-auto mt-10 text-xl font-semibold capitalize ">Employee performance</strong>
             <div className="w-[1100px] h-screen flex mx-auto my-auto">
                 <div className='border border-gray-50 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl'>
                     <canvas id='myChart2'></canvas>

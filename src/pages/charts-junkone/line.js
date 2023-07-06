@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Chart } from "chart.js";
-export default function Linechart({ Organization,username}) {
+export default function Linechart() {
   useEffect(() => {
     var ctx = document.getElementById('myChart3').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -39,7 +39,7 @@ export default function Linechart({ Organization,username}) {
   return (
     <>
       {/* line chart */}
-      <strong className="w-[150px] mx-auto mt-10 text-xl font-semibold capitalize ">{username}'s performance line Chart</strong><br></br><br></br>
+      <strong className="w-[150px] mx-auto mt-10 text-xl font-semibold capitalize ">line Chart</strong>
       <div className="w-[1100px] h-screen flex mx-auto my-auto">
         <div className='border border-gray-400 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl'>
           <canvas id='myChart3'></canvas>

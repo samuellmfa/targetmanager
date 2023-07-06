@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Chart } from "chart.js";
-export default function Piechart({ Organization,username}) {
+export default function Piechart() {
     useEffect(() => {
         var ctx = document.getElementById('myChart1').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -39,7 +39,7 @@ export default function Piechart({ Organization,username}) {
     return (
         <>
             {/* Pie chart */}
-            <strong className="w-[110px] mx-auto mt-10 text-xl font-semibold capitalize ">{username}'s performance Chart</strong> <br></br>
+            <h1 className="w-[110px] mx-auto mt-10 text-xl font-semibold capitalize ">Pie Chart</h1>
             <div className="w-[1100px] h-screen flex mx-auto my-auto">
                 <div className='border border-gray-400 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl pb-2'>
                     <canvas id='myChart1'></canvas>
