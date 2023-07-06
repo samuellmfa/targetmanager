@@ -72,8 +72,7 @@ export default  function Employee( {username, created} )
 <br />
 <br />
 <br />
-<Titlebar  username={username}/>
-
+<Titlebar />
  
             <h3><strong>Plan Your Monthly Tasks</strong></h3>
  

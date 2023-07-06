@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { Chart } from "chart.js";
+
 export default function Barchart( { Organization,username}) {
     useEffect(() => {
         var ctx = document.getElementById('myChart2').getContext('2d');
