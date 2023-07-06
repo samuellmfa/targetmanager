@@ -41,7 +41,7 @@ export default function Barchart() {
     return (
         <>
            
-            <h1 className="w-[150px] mx-auto mt-10 text-xl font-semibold capitalize ">Employee performance</h1>
+            <strong className="w-[150px] mx-auto mt-10 text-xl font-semibold capitalize ">Employee performance</strong>
             <div className="w-[1100px] h-screen flex mx-auto my-auto">
                 <div className='border border-gray-50 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl'>
                     <canvas id='myChart2'></canvas>

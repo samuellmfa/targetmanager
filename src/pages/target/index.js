@@ -1,6 +1,8 @@
 import Layout from '../../../components/layout'
 import DepartmentsList from '../../../components/departmentsList'
 import { getCookie } from 'cookies-next';
+import Titlebar from '../component/Menu/titlebar';
+import _footer from '../component/Footer/footer';
 import Link from 'next/link'
 import useSWR from "swr";
 import { useRouter } from "next/router";
@@ -72,17 +74,24 @@ export default  function Employee( {username, created} )
  }
  
     return (
-        
+
         <Layout pageTitle="employee">
-            <Link href="/">Home</Link><br/>
+                 <br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<Titlebar />
  
-            <h3>Plan your annual tasks</h3>
-            <form action='' method='POST'>
- <table border={1}>
+            <h3><strong>Plan Your Annual Tasks</strong></h3>
+            <form action='' method='POST' class="form-group">
+ <table border={1} style={{ borderRadius: '6px' }} class="table table-bordered table-striped">
  {data.map((tar, index) => (
     <tr key={tar._id}>
         <td>
-        <textarea id={tar._id} name={tar._id} rows="5" cols="33">{tar.Year_target}</textarea>
+        <textarea id={tar._id} name={tar._id} rows="5" cols="33"  class="form-control">{tar.Year_target}</textarea>
         </td>
         <td>
         <label htmlFor="name">{tar.Weight}</label>
@@ -163,10 +172,19 @@ export default  function Employee( {username, created} )
     ))}
  </table>
  <br></br><br></br><br></br>
+ 
+ <div className="upload-button">
  <input type="" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
+        </div>
     </form>
+    <br />
+<br />
+<br />
     <ProductList/>
-
+    <br />
+<br />
+<br />
+    <_footer/>
     </Layout>
     );
 }

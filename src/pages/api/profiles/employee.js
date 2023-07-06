@@ -98,7 +98,7 @@ export default async function handler(req, res) {
       const profile = new Profile(profileData);
       await profile.save();
       
-      return res.status(201).json({ status: "Product created." });
+      res.redirect("/profile/employee");
     } catch (error) {
       console.error(error);
       return res.status(400).json({ error: error.message });

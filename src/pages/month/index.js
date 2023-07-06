@@ -2,6 +2,8 @@ import Layout from '../../../components/layout'
 import DepartmentsList from '../../../components/departmentsList'
 import { getCookie } from 'cookies-next';
 import Link from 'next/link'
+import Titlebar from '../component/Menu/titlebar';
+import _footer from '../component/Footer/footer';
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -63,11 +65,20 @@ export default  function Employee( {username, created} )
     return (
         
         <Layout pageTitle="month">
-            <Link href="/">Home</Link><br/>
+            <br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<Titlebar />
  
-            <h3>Plan your annual tasks</h3>
+            <h3><strong>Plan Your Monthly Tasks</strong></h3>
+ 
             <form action='/api/profiles/employee' method='POST'>
- <table border={1}>
+            <table border={1}  class="table table-bordered table-striped">
+
  {data.map((mon, index) => (
     <tr key={mon._id}>
         <td>
@@ -110,7 +121,7 @@ export default  function Employee( {username, created} )
  <input type="submit" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
     </form>
     <ProductList/>
-
+    <_footer/>
     </Layout>
     );
 }
