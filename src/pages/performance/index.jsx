@@ -24,17 +24,7 @@ export default function HomePage( {username,Organization} ) {
 <br />
 <br />
 <Titlebar  Organization={Organization} username={username}/>
-              <Layout pageTitle="Home">
-        {username ?
-        <>
-            <h2>Hi {username}</h2>
-            <Link href="/api/logout">Logout</Link><br/>
-        </>: 
-        <>
-            <Link href="/login">Login</Link><br/>
-        </>
-        }
-        </Layout>
+
         <main className={`${styles.main} ${inter.className}`}>
           
         <div class="custom-container">

@@ -11,40 +11,40 @@ export default async function handler(request, response) {
     const targets = await Target.find({"Organization":cookies.get('Organization')});
     const departments = await Department.find({"Organization":cookies.get('Organization')});
 
-  //  const tar =new Target({
-  //   "Year_target": "",
-  //   "Weight": 3,
-  //   "Organization": cookies.get('Organization'),
-  //   "username": cookies.get('username'),
-  //   "isActive": "true",
-  //   "evaluationResult": 20,
-  //   "evaluation": [{"0": "true","1": "true","2": "true","3": "true","4": "true","5": "true"}],
-  //   "employees": [ ]
-  // })
+   const tar =new Target({
+    "Year_target": "",
+    "Weight": 3,
+    "Organization": cookies.get('Organization'),
+    "username": cookies.get('username'),
+    "isActive": "true",
+    "evaluationResult": 20,
+    "evaluation": [{"0": "true","1": "true","2": "true","3": "true","4": "true","5": "true"}],
+    "employees": [ ]
+  })
 
-  // departments.map(dept => {
-  //   tar.employees.push(      {
-  //     "name": dept.Level_name,
-  //     "username": dept.Level_name,
-  //     "Jan": "false",
-  //     "Feb": "false",
-  //     "Mar": "false",
-  //     "Apr": "false",
-  //     "May": "false",
-  //     "Jun": "false",
-  //     "Jul": "false",
-  //     "Aug": "false",
-  //     "Sep": "false",
-  //     "Oct": "false",
-  //     "Nov": "false",
-  //     "Dec": "false"
-  //   })
+  departments.map(dept => {
+    tar.employees.push(      {
+      "name": dept.Level_name,
+      "username": dept.Level_name,
+      "Jan": "true",
+      "Feb": "false",
+      "Mar": "false",
+      "Apr": "false",
+      "May": "false",
+      "Jun": "false",
+      "Jul": "false",
+      "Aug": "false",
+      "Sep": "false",
+      "Oct": "false",
+      "Nov": "false",
+      "Dec": "false"
+    })
     
-  // })
-  // targets.push(tar)
+  })
+  targets.push(tar)
 
-    //const department = new Department({"Level_name":cookies.get('Organization')},{"Parent_department":cookies.get('Organization')},);
-    //  departments.push(department)
+    const department = new Department({"Level_name":cookies.get('Organization')},{"Parent_department":cookies.get('Organization')},);
+     departments.push(department)
     return response.status(200).json(targets);
   }
 

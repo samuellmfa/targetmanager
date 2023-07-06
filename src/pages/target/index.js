@@ -170,9 +170,19 @@ export default  function Employee( {username, created} )
         <button type="button" onClick={()=>handleDeleteTarget(tar._id)} class="btn btn-outline-success btn-xs">-</button>
         
         </td>
+        
     </tr>
     ))}
+    
  </table>
+ {data.length === 0 ? (
+  <>
+    <button onClick={handleAddClick} className="btn btn-outline-success btn-xs">+</button>
+  </>
+) : (
+  <></>
+)}
+
  <br></br><br></br><br></br>
  
  <div className="upload-button">

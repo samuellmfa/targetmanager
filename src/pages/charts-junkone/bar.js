@@ -6,7 +6,7 @@ export default function Barchart() {
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                labels: ["Sales", "IT", "Human Resource", "Accounting", "Design", "Promotion", "Production"],
                 datasets: [{
                     data: [66, 144, 146, 116, 107, 131, 43],
                     label: "Applied",
