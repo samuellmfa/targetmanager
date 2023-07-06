@@ -55,3 +55,15 @@ header a {
 header a:hover {
   color: #b2dfdb;
 }
+
+.custom-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-container > div {
+  width: 70%;
+  /* Additional styling for the individual divs if needed */
+}

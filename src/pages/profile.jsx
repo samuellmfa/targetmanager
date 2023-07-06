@@ -15,7 +15,8 @@ export default function ProfilePage( {username, created} ) {
       <br />
       <br />
       <br />
-      <Titlebar />
+      <Titlebar username={username}/>
+
             <h2>{username}'s Profile</h2>
             <p>Account created at <strong>{created}</strong></p>
 

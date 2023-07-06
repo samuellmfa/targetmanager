@@ -146,7 +146,6 @@ export default function HomePage( {username,Organization} ) {
   <p>Before Chi, dashboarding was an expensive, inflexible, and time-consuming process. Now create stunning visualizations and share those dashboards internally and externally, in record time.</p>
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">Gantt charts</h4>
       <p class="card-text">Instant Calculations, Evaluations, and Aggregations of your Organization</p>
       <Piechart/>
       <a href="/signup" class="card-link">Register</a>
@@ -156,21 +155,6 @@ export default function HomePage( {username,Organization} ) {
 </div>
 
 
-
-
-        
-
-
- 
-          {/* <div>
-            <Barchart/>
-            </div>
-            <div>
-            <Linechart/>
-            </div>
-            <div>
-            <Piechart/>
-          </div> */}
         </main>
         <_footer vercelLogo={styles.vercelLogo} />
        
