@@ -77,7 +77,8 @@ export default  function Employee( {username, created} )
             <h3><strong>Plan Your Monthly Tasks</strong></h3>
  
             <form action='/api/profiles/employee' method='POST'>
- <table border={1}>
+            <table border={1}  class="table table-bordered table-striped">
+
  {data.map((mon, index) => (
     <tr key={mon._id}>
         <td>

@@ -96,7 +96,7 @@ export default  function Employee( {username, created} )
             <h2>Evaluate Your Weekly Tasks</h2>
             <form action={`/api/weekly`} method="PUT">
 
-            <table border={1}>
+            <table border={1}  class="table table-bordered">
   {data.map((mon, index) => (
     <tr key={mon._id}>
       <td>

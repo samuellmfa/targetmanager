@@ -86,12 +86,12 @@ export default  function Employee( {username, created} )
 <Titlebar />
  
             <h3><strong>Plan Your Annual Tasks</strong></h3>
-            <form action='' method='POST'>
- <table border={1}>
+            <form action='' method='POST' class="form-group">
+ <table border={1} style={{ borderRadius: '6px' }} class="table table-bordered table-striped">
  {data.map((tar, index) => (
     <tr key={tar._id}>
         <td>
-        <textarea id={tar._id} name={tar._id} rows="5" cols="33">{tar.Year_target}</textarea>
+        <textarea id={tar._id} name={tar._id} rows="5" cols="33"  class="form-control">{tar.Year_target}</textarea>
         </td>
         <td>
         <label htmlFor="name">{tar.Weight}</label>

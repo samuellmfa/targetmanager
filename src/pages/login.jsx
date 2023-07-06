@@ -16,7 +16,6 @@ export default function LoginPage( {username,Organization} ) {
         <Layout pageTitle="Login">
             <br></br><br></br><br></br><br></br><br></br><br></br>
          <Titlebar/>
-            <Link href="/">Home</Link><br/>
 
   <section className="vh-100">
       <div className="container-fluid h-custom">

@@ -41,6 +41,34 @@ export default function HomePage( {username,Organization} ) {
         
         <main className={`${styles.main} ${inter.className}`}>
         <br></br><br></br>
+        <div class="container">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="/images/f9.jpg" alt="First slide"/>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/Penting_Ini_7_Manfaat_Besar_Software_Manajemen_Proyek_Yang_Harus_Anda_Ketahui_077b75b636.jpg" alt="Second slide"/>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/planning-.jpg" alt="Third slide"/>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/images/project.png" alt="Fourth slide"/>
+    </div>
+  
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+        </div>
+
 <div class="container">
   <h3><i>Cloud solution for your company's Planning and Mange your tasks..</i></h3>
   <p>CHI’s Planning tools to perform employee evaluation and Target analysis. Automated Planning  can quickly convert data into insights. Identify problem areas, create real-time notifications, and generate recommendations.</p>
