@@ -1,5 +1,4 @@
 import dbConnect from "../../../db/connect";
-import Product from "../../../db/models/Product";
 import clientPromise from "../../../lib/mongodb";
 
 export default async function handler(request, response) {

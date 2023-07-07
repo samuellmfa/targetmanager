@@ -119,7 +119,6 @@ export default  function Employee( {username, created} )
  <br></br><br></br><br></br>
  <input type="" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
     </form>
-    <ProductList/>
     <_footer/>
     </Layout>
     );
