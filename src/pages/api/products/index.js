@@ -1,5 +1,4 @@
 import dbConnect from "../../../../db/connect";
-import Product from "../../../../db/models/Product";
 import Target from "../../../../db/models/Target";
 
 export default async function handler(request, response) {

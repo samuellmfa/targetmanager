@@ -7,7 +7,6 @@ import _footer from "../component/Footer/footer";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.css";
-import ProductList from "../../../components/ProductList";
 import React, { useState } from "react";
 import { uid } from "uid";
 export default  function Employee( {username, created} )
@@ -154,7 +153,6 @@ export default  function Employee( {username, created} )
 </form>
    
 
-    <ProductList/>
 
     <_footer/>
     </Layout>
