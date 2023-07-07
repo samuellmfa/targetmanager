@@ -2,17 +2,17 @@ import { Source_Serif_4 } from "next/font/google";
 import dbConnect from "../../../../db/connect";
 import Department from "../../../../db/models/Department";
 import Month from "../../../../db/models/Month";
-import Cookies from 'cookies'
+import Cookies from "cookies"
 export default async function handler(request, response) {
   await dbConnect();
 
   // const { id } = request.query;
   if (request.method === "GET") {
     const cookies = new Cookies(request, response)
-    const months = await Month.find({"Organization":cookies.get('Organization')});
-    const departments = await Department.find({"Organization":cookies.get('Organization')});
+    const months = await Month.find({"Organization":cookies.get("Organization")});
+    const departments = await Department.find({"Organization":cookies.get("Organization")});
 
-    //const department = new Department({"Level_name":cookies.get('Organization')},{"Parent_department":cookies.get('Organization')},);
+    //const department = new Department({"Level_name":cookies.get("Organization")},{"Parent_department":cookies.get("Organization")},);
     //  departments.push(department)
     return response.status(200).json(months);
   }

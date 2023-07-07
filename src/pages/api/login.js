@@ -1,11 +1,11 @@
-import Cookies from 'cookies'
+import Cookies from "cookies"
 import clientPromise from "../../../lib/mongodb";
-const {createHash} = require('node:crypto');
+const {createHash} = require("node:crypto");
 
 export default async function handler(req, res) {
   if (req.method == "POST"){
-    const username = req.body['username']
-    const guess = req.body['password']
+    const username = req.body["username"]
+    const guess = req.body["password"]
     const client = await clientPromise;
     const db = client.db("Accounts");
     const users = await db.collection("profiles").find({"Username": username}).toArray();
@@ -14,12 +14,12 @@ export default async function handler(req, res) {
         return;
     }
     const user = users[0]
-    const guess_hash = createHash('sha256').update(guess).digest('hex');
+    const guess_hash = createHash("sha256").update(guess).digest("hex");
     if (guess_hash == user.Password){
         const cookies = new Cookies(req, res)
-        cookies.set('username', username)
-        cookies.set('Organization', user.Organization)
-        cookies.set('chart', "somedata")
+        cookies.set("username", username)
+        cookies.set("Organization", user.Organization)
+        cookies.set("chart", "somedata")
         res.redirect("/performance")
     } else {
         res.redirect("/login?msg=Incorrect username or password")

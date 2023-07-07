@@ -1,13 +1,13 @@
-import Layout from '../../../components/layout'
-import DepartmentsList from '../../../components/departmentsList'
-import { getCookie } from 'cookies-next';
-import Link from 'next/link'
-import Titlebar from '../component/Menu/titlebar';
-import _footer from '../component/Footer/footer';
+import Layout from "../../../components/layout"
+import DepartmentsList from "../../../components/departmentsList"
+import { getCookie } from "cookies-next";
+import Link from "next/link"
+import Titlebar from "../component/Menu/titlebar";
+import _footer from "../component/Footer/footer";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import 'bootstrap/dist/css/bootstrap.css';
-import ProductList from '../../../components/ProductList';
+import "bootstrap/dist/css/bootstrap.css";
+import ProductList from "../../../components/ProductList";
 import React, { useState } from "react";
 export default  function Employee( {username, created} )
 {
@@ -76,13 +76,13 @@ export default  function Employee( {username, created} )
  
             <h3><strong>Plan Your Monthly Tasks</strong></h3>
  
-            <form action='' method='POST'>
+            <form action="" method="POST">
             <table border={1}  class="table table-bordered table-striped">
 
  {data.map((mon, index) => (
     <tr key={mon._id}>
         <td>
-        <textarea id="story" name="story" rows="5" cols="33">{mon.month_Target}</textarea>
+        <textarea id="story" name="story" rows="5" cols="33">{mon.Month_target}</textarea>
         </td>
         <td>
         <label htmlFor="name">{mon.Weight}</label>
@@ -95,16 +95,16 @@ export default  function Employee( {username, created} )
                                   <div className="btn-group-toggle" data-toggle="buttons">
                                   <div class="btn-group mr-2" role="group" aria-label="First group">
                                          <input type="checkbox" className="btn-check btn-xs" value={mon.Weekone_plan} id={mon._id} name={mon._id}  onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekone_plan ? 'active' : ''}`}  value={mon.Weekone_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weekone_plan}>Week 1</label>
+                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekone_plan ? "active" : ""}`}  value={mon.Weekone_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weekone_plan}>Week 1</label>
                                        
                                          <input type="checkbox" className="btn-check btn-xs" value={mon.Weektwo_plan} id={mon._id} name={mon._id}  onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weektwo_plan ? 'active' : ''}`} value={mon.Weektwo_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weektwo_plan}>Week 2</label>
+                                         <label className={`btn btn-outline-success btn-xs ${mon.Weektwo_plan ? "active" : ""}`} value={mon.Weektwo_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weektwo_plan}>Week 2</label>
                                          
                                          <input type="checkbox" className="btn-check btn-xs" value={mon.Weekthree_plan} id={mon._id} name={mon._id}  onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekthree_plan ? 'active' : ''}`} value={mon.Weekthree_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weekthree_plan}>Week 3</label>
+                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekthree_plan ? "active" : ""}`} value={mon.Weekthree_plan} id={mon._id} name={mon._id} htmlFor={mon._id} aria-pressed={mon.Weekthree_plan}>Week 3</label>
                                         
                                          <input type="checkbox" className="btn-check btn-xs" value={mon.Weekfour_plan} id={mon._id} name={mon._id} onChange={() => handleClick(`${mon._id}`)}/>
-                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekfour_plan ? 'active' : ''}`} value={mon.Weekfour_plan} id={mon._id} name={mon._id}  htmlFor={mon._id} aria-pressed={mon.Weekfour_plan}>Week 4</label>
+                                         <label className={`btn btn-outline-success btn-xs ${mon.Weekfour_plan ? "active" : ""}`} value={mon.Weekfour_plan} id={mon._id} name={mon._id}  htmlFor={mon._id} aria-pressed={mon.Weekfour_plan}>Week 4</label>
                                       </div>
                                     </div>
                                     </div>
@@ -129,9 +129,9 @@ export default  function Employee( {username, created} )
 export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
-    var username = getCookie('username', { req, res });
-    var Organization = getCookie('Organization', { req, res });
-    var IsEmployee = getCookie('IsEmployee', { req, res });
+    var username = getCookie("username", { req, res });
+    var Organization = getCookie("Organization", { req, res });
+    var IsEmployee = getCookie("IsEmployee", { req, res });
     console.log(Organization,username,IsEmployee)
     // if (username != undefined){
     //     return {

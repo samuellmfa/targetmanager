@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 import Image from "next/image"
 export default function _footer(vercelLogo)
 {
@@ -10,10 +11,10 @@ export default function _footer(vercelLogo)
         {/* Left */}
         <div className="me-5 d-none d-lg-block">
           <span>Get connected  :  </span>
-          <a href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3" ><Image src="/images/twitter.svg" alt="Sample image" width={18} height={20} /></a>
-   <a href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><Image src="/images/facebook.svg" alt="Sample image" width={18} height={20} /></a>
-   <a href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><Image src="/images/google.svg" alt="Sample image" width={18} height={20} /></a>
-   <a href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><Image src="/images/linkedin.svg" alt="Sample image" width={18} height={20} /></a>
+          <Link href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3" ><Image src="/images/twitter.svg" alt="Sample image" width={18} height={20} /></Link>
+   <Link href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><Image src="/images/facebook.svg" alt="Sample image" width={18} height={20} /></Link>
+   <Link href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><Image src="/images/google.svg" alt="Sample image" width={18} height={20} /></Link>
+   <Link href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><Image src="/images/linkedin.svg" alt="Sample image" width={18} height={20} /></Link>
 
         </div>
         {/* Left */}
@@ -51,16 +52,16 @@ all in one place.
                 Products
               </h6>
               <p>
-                <a href="#!" className="text-reset">Planning</a>
+                <Link href="#!" className="text-reset">Planning</Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">Reporting</a>
+                <Link href="#!" className="text-reset">Reporting</Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">Charts</a>
+                <Link href="#!" className="text-reset">Charts</Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">Evaluation</a>
+                <Link href="#!" className="text-reset">Evaluation</Link>
               </p>
             </div>
             {/* Grid column */}
@@ -72,16 +73,16 @@ all in one place.
                 Useful links
               </h6>
               <p>
-                <a href="#!" className="text-reset">Pricing</a>
+                <Link href="#!" className="text-reset">Pricing</Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">Settings</a>
+                <Link href="#!" className="text-reset">Settings</Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">Orders</a>
+                <Link href="#!" className="text-reset">Orders</Link>
               </p>
               <p>
-                <a href="#!" className="text-reset">Help</a>
+                <Link href="#!" className="text-reset">Help</Link>
               </p>
             </div>
             {/* Grid column */}
@@ -106,9 +107,9 @@ all in one place.
       {/* Section: Links */}
 
       {/* Copyright */}
-      <div className="text-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.025)' }}>
+      <div className="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.025)" }}>
         © 2023 Copyright:
-        <a className="text-reset fw-bold" href="/">chi technologies</a>
+        <Link className="text-reset fw-bold" href="/">chi technologies</Link>
       </div>
       {/* Copyright */}
     </footer>

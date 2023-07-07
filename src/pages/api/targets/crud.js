@@ -2,7 +2,7 @@ import { Source_Serif_4 } from "next/font/google";
 import dbConnect from "../../../../db/connect";
 import Department from "../../../../db/models/Department";
 import Target from "../../../../db/models/Target";
-import Cookies from 'cookies'
+import Cookies from "cookies"
 export default async function handler(request, response) {
   await dbConnect();
 
@@ -12,7 +12,7 @@ export default async function handler(request, response) {
     try {
       //this is the begining 
     //   const cookies = new Cookies(request, response)
-    //   const departments = await Department.find({"Organization":cookies.get('Organization')});
+    //   const departments = await Department.find({"Organization":cookies.get("Organization")});
   
      const target =new Target({
         "Year_target": " ",
@@ -28,18 +28,18 @@ export default async function handler(request, response) {
           {
             "name": "samuel",
             "username": "samuel",
-            "Jan": "true",
-            "Feb": "true",
-            "Mar": "true",
-            "Apr": "true",
-            "May": "true",
-            "Jun": "true",
-            "Jul": "true",
-            "Aug": "true",
-            "Sep": "true",
-            "Oct": "true",
-            "Nov": "true",
-            "Dec": "true"
+            "Jan": "false",
+            "Feb": "false",
+            "Mar": "false",
+            "Apr": "false",
+            "May": "false",
+            "Jun": "false",
+            "Jul": "false",
+            "Aug": "false",
+            "Sep": "false",
+            "Oct": "false",
+            "Nov": "false",
+            "Dec": "false"
           },
           {
             "name": " kaku",
@@ -76,7 +76,7 @@ export default async function handler(request, response) {
     const _id= "649eb2399b776f11ec92ef9e";
     //await Target.findByIdAndDelete(id)
     const cinema = await Target.findByIdAndDelete(_id);
-   // await Target.findByIdAndDelete('649eb2399b776f11ec92ef9e')
+   // await Target.findByIdAndDelete("649eb2399b776f11ec92ef9e")
    response.status(200).json({ status: "Product successfully deleted." });
    } 
    catch{

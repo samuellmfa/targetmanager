@@ -1,12 +1,12 @@
-import Layout from '../../../components/layout'
-import DepartmentsList from '../../../components/departmentsList'
-import { getCookie } from 'cookies-next';
-import Link from 'next/link'
+import Layout from "../../../components/layout"
+import DepartmentsList from "../../../components/departmentsList"
+import { getCookie } from "cookies-next";
+import Link from "next/link"
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import { Chart } from 'react-google-charts';
-import Titlebar from '../component/Menu/titlebar';
-import _footer from '../component/Footer/footer';
+import { Chart } from "react-google-charts";
+import Titlebar from "../component/Menu/titlebar";
+import _footer from "../component/Footer/footer";
 export const chart_data = [];
 
 export const options = {
@@ -50,7 +50,7 @@ export default  function Employee( {username, created} )
             </div>
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form
-                 action='/api/profiles/employee' method='POST'
+                 action="/api/profiles/employee" method="POST"
                 className="border border-primary rounded p-4"
               >
                 <div>
@@ -131,7 +131,7 @@ export default  function Employee( {username, created} )
                   <button
                     type="submit"
                     className="btn btn-primary btn-lg"
-                    style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}
+                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                   >
                     Create
                   </button>
@@ -161,9 +161,9 @@ export default  function Employee( {username, created} )
 export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
-    var username = getCookie('username', { req, res });
-    var Organization = getCookie('Organization', { req, res });
-    var IsEmployee = getCookie('IsEmployee', { req, res });
+    var username = getCookie("username", { req, res });
+    var Organization = getCookie("Organization", { req, res });
+    var IsEmployee = getCookie("IsEmployee", { req, res });
     console.log(Organization,username,IsEmployee)
     // if (username != undefined){
     //     return {
