@@ -1,13 +1,13 @@
 import dbConnect from "../../../../db/connect";
 import Department from "../../../../db/models/Department";
-import Cookies from 'cookies'
+import Cookies from "cookies"
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
     const cookies = new Cookies(request, response)
-    const departments = await Department.find({"Organization":cookies.get('Organization')});
-    const department = new Department({"Level_name":cookies.get('Organization')},{"Parent_department":cookies.get('Organization')},);
+    const departments = await Department.find({"Organization":cookies.get("Organization")});
+    const department = new Department({"Level_name":cookies.get("Organization")},{"Parent_department":cookies.get("Organization")},);
     departments.push(department)
     return response.status(200).json(departments);
   }
@@ -20,7 +20,7 @@ export default async function handler(request, response) {
        {
         departmentData.Level_Department=request.body.Parent_department;
        }
-      departmentData.Organization =cookies.get('Organization');
+      departmentData.Organization =cookies.get("Organization");
       const department = new Department(departmentData);
       await department.save();
       response.redirect("/department");

@@ -1,15 +1,15 @@
-import Layout from '../../../components/layout'
-import DepartmentsList from '../../../components/departmentsList'
-import { getCookie } from 'cookies-next';
-import Link from 'next/link'
-import Titlebar from '../component/Menu/titlebar';
-import _footer from '../component/Footer/footer';
+import Layout from "../../../components/layout"
+import DepartmentsList from "../../../components/departmentsList"
+import { getCookie } from "cookies-next";
+import Link from "next/link"
+import Titlebar from "../component/Menu/titlebar";
+import _footer from "../component/Footer/footer";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import 'bootstrap/dist/css/bootstrap.css';
-import ProductList from '../../../components/ProductList';
+import "bootstrap/dist/css/bootstrap.css";
+import ProductList from "../../../components/ProductList";
 import React, { useState } from "react";
-import { uid } from 'uid';
+import { uid } from "uid";
 export default  function Employee( {username, created} )
 {
   
@@ -59,25 +59,25 @@ export default  function Employee( {username, created} )
     }
   
     // Send the form values to the server using an AJAX request or fetch API
-    fetch('/api/weekly/', {
-      method: 'PUT',
+    fetch("/api/weekly/", {
+      method: "PUT",
       body: JSON.stringify(formValues),
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       }
     })
       .then(response => {
         if (response.ok) {
           // Handle the successful response
-          console.log('Form submitted successfully!');
+          console.log("Form submitted successfully!");
         } else {
           // Handle errors
-          console.log('Form submission failed.');
+          console.log("Form submission failed.");
         }
       })
       .catch(error => {
         // Handle errors
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   }
   
@@ -123,19 +123,19 @@ export default  function Employee( {username, created} )
          <React.Fragment>
   <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
     <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`zero${mon._id}`} autoComplete="off" value="0"    data-val = "0" defaultChecked/>
-    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.zero === 0 ? 'active' : ''}`} htmlFor={`zero${mon._id}`}>0%</label>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.zero === 0 ? "active" : ""}`} htmlFor={`zero${mon._id}`}>0%</label>
 
     <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`twentyfive${mon._id}`} autoComplete="off" value="25"   data-val = "25" />
-    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.twentyfive === 25 ? 'active' : ''}`} htmlFor={`twentyfive${mon._id}`}>25%</label>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.twentyfive === 25 ? "active" : ""}`} htmlFor={`twentyfive${mon._id}`}>25%</label>
 
     <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`fifty${mon._id}`} autoComplete="off" value="50"    data-val = "50"/>
-    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.fifty === 50 ? 'active' : ''}`} htmlFor={`fifty${mon._id}`}>50%</label>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.fifty === 50 ? "active" : ""}`} htmlFor={`fifty${mon._id}`}>50%</label>
 
     <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`seventyfive${mon._id}`} autoComplete="off" value="75"    data-val = "75"/>
-    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.seventyfive === 75 ? 'active' : ''}`} htmlFor={`seventyfive${mon._id}`}>75%</label>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.seventyfive === 75 ? "active" : ""}`} htmlFor={`seventyfive${mon._id}`}>75%</label>
 
     <input type="radio" className="btn-check" name={`btnradio-${index}`} id={`hundred${mon._id}`} autoComplete="off" value="100"    data-val = "100"/>
-    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.hundred === 100 ? 'active' : ''}`} htmlFor={`hundred${mon._id}`}>100%</label>
+    <label className={`btn btn-outline-success btn-xs ${mon.evaluationone && mon.evaluationone.hundred === 100 ? "active" : ""}`} htmlFor={`hundred${mon._id}`}>100%</label>
   </div>
 </React.Fragment>
 
@@ -163,9 +163,9 @@ export default  function Employee( {username, created} )
 export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
-    var username = getCookie('username', { req, res });
-    var Organization = getCookie('Organization', { req, res });
-    var IsEmployee = getCookie('IsEmployee', { req, res });
+    var username = getCookie("username", { req, res });
+    var Organization = getCookie("Organization", { req, res });
+    var IsEmployee = getCookie("IsEmployee", { req, res });
     console.log(Organization,username,IsEmployee)
     return { props: {Organization,username}, };
 };

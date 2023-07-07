@@ -1,14 +1,14 @@
-import Layout from '../../components/layout'
-import { getCookie } from 'cookies-next';
-import Link from 'next/link'
-import _footer from './component/Footer/footer';
-import { useRouter } from 'next/router'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import Image from 'next/image';
+import Layout from "../../components/layout"
+import { getCookie } from "cookies-next";
+import Link from "next/link"
+import _footer from "./component/Footer/footer";
+import { useRouter } from "next/router"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import Image from "next/image";
 
 import { faHome, faUser, faUserCircle, faUserLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Titlebar from './component/Menu/titlebar';
+import Titlebar from "./component/Menu/titlebar";
 export default function LoginPage( {username,Organization} ) {
     const router = useRouter()
     const { msg } = router.query
@@ -21,11 +21,11 @@ export default function LoginPage( {username,Organization} ) {
       <div className="container-fluid h-custom">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-9 col-lg-6 col-xl-5">
-            <img src="/images/login.png"
-              className="img-fluid" alt="Sample image" />
+            <Image src="/images/login.png"
+              className="img-fluid" alt="Sample image" width={400} height={400} />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form  action='/api/login' method='POST' className="border border-primary rounded p-4">
+          <form  action="/api/login" method="POST" className="border border-primary rounded p-4">
             <div>
   {msg ? (
     <strong className="red">
@@ -34,10 +34,10 @@ export default function LoginPage( {username,Organization} ) {
   ) : (
     <><div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
     <p className="lead fw-normal mb-0 me-3">Sign in</p>
-   <a href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3" ><p><Image src="/images/twitter.svg" alt="Sample image" width={18} height={20} /></p></a>
-   <a href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><p><Image src="/images/facebook.svg" alt="Sample image" width={18} height={20} /></p></a>
-   <a href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><p><Image src="/images/google.svg" alt="Sample image" width={18} height={20} /></p></a>
-   <a href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><p><Image src="/images/linkedin.svg" alt="Sample image" width={18} height={20} /></p></a>
+   <Link href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3" ><p><Image src="/images/twitter.svg" alt="Sample image" width={18} height={20} /></p></Link>
+   <Link href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><p><Image src="/images/facebook.svg" alt="Sample image" width={18} height={20} /></p></Link>
+   <Link href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><p><Image src="/images/google.svg" alt="Sample image" width={18} height={20} /></p></Link>
+   <Link href="/target" target="_self"rel="noopener noreferrer" className="lead fw-normal mb-0 me-3"><p><Image src="/images/linkedin.svg" alt="Sample image" width={18} height={20} /></p></Link>
 
   </div></>
   )}
@@ -65,14 +65,14 @@ export default function LoginPage( {username,Organization} ) {
                     Remember me
                   </label>
                 </div>
-                <a href="#!" className="text-body">Forgot password?</a>
+                <Link href="#!" className="text-body">Forgot password?</Link>
               </div>
 
               <div className="text-center text-lg-start mt-4 pt-2">
                 <button type="submit" className="btn btn-primary btn-lg"
-                  style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>Login</button>
-                <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                  className="link-danger">Register</a></p>
+                  style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}>Login</button>
+                <p className="small fw-bold mt-2 pt-1 mb-0">Don&apos;t have an account? <Link href="#!"
+                  className="link-danger">Register</Link></p>
               </div>
             </form>
           </div>
@@ -88,8 +88,8 @@ export default function LoginPage( {username,Organization} ) {
 export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
-    var username = getCookie('username', { req, res });
-    var Organization = getCookie('Organization', { req, res });
+    var username = getCookie("username", { req, res });
+    var Organization = getCookie("Organization", { req, res });
     if (username != undefined){
         return {
             redirect: {

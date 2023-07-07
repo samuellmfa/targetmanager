@@ -1,16 +1,16 @@
-import Layout from '../../../components/layout'
-import { getCookie } from 'cookies-next';
-import Link from 'next/link'
-import React from 'react'
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import _footer from './component /Footer/footer'
-import Barchart from './charts/bar'
-import Piechart from './charts/pie'
-import Linechart from './charts/line'
-const inter = Inter({ subsets: ['latin'] })
+import Layout from "../../../components/layout"
+import { getCookie } from "cookies-next";
+import Link from "next/link"
+import React from "react"
+import Head from "next/head"
+import Image from "next/image"
+import { Inter } from "next/font/google"
+import styles from "@/styles/Home.module.css"
+import _footer from "./component /Footer/footer"
+import Barchart from "./charts/bar"
+import Piechart from "./charts/pie"
+import Linechart from "./charts/line"
+const inter = Inter({ subsets: ["latin"] })
 export default function HomePage( {username,Organization} ) {
     return (
         <>
@@ -33,7 +33,7 @@ export default function HomePage( {username,Organization} ) {
                 />
           <check/>
           <div className={styles.description}>
-          <a
+          <Link
                 href="/account/employee"
                 target="_self"
                 rel="noopener noreferrer"
@@ -42,12 +42,12 @@ export default function HomePage( {username,Organization} ) {
               Home &nbsp;
               
             </p>
-            </a>
+            </Link>
             <div>
             {username ?
          <>
-         <a href="/account/employee" target="_self"rel="noopener noreferrer"><p> Your {Organization} Monthly Plan&nbsp;</p></a>
-         <a href="/account/registration" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Plan&nbsp;</p></a>
+         <Link href="/account/employee" target="_self"rel="noopener noreferrer"><p> Your {Organization} Monthly Plan&nbsp;</p></Link>
+         <Link href="/account/registration" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Plan&nbsp;</p></Link>
          </>
         : 
         <>
@@ -64,7 +64,7 @@ export default function HomePage( {username,Organization} ) {
         <>
             <h2>Hi {username}</h2>
             <Link href="/profile">Profile</Link><br/>
-            <Link href="/account/employee">Create Employee's Account</Link><br/>
+            <Link href="/account/employee">Create Employee&apos;s Account</Link><br/>
             <Link href="/api/logout">Logout</Link><br/>
         </>: 
         <>
@@ -85,7 +85,7 @@ export default function HomePage( {username,Organization} ) {
             <Piechart/>
           </div>
           <div className={styles.grid}>
-            <a
+            <Link
               href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               className={styles.card}
               target="_blank"
@@ -97,9 +97,9 @@ export default function HomePage( {username,Organization} ) {
               <p>
                 Find in-depth information about Next.js features and&nbsp;API.
               </p>
-            </a>
+            </Link>
   
-            <a
+            <Link
               href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               className={styles.card}
               target="_blank"
@@ -111,9 +111,9 @@ export default function HomePage( {username,Organization} ) {
               <p>
                 Learn about Next.js in an interactive course with&nbsp;quizzes!
               </p>
-            </a>
+            </Link>
   
-            <a
+            <Link
               href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               className={styles.card}
               target="_blank"
@@ -125,9 +125,9 @@ export default function HomePage( {username,Organization} ) {
               <p>
                 Discover and deploy boilerplate example Next.js&nbsp;projects.
               </p>
-            </a>
+            </Link>
   
-            <a
+            <Link
               href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               className={styles.card}
               target="_blank"
@@ -140,7 +140,7 @@ export default function HomePage( {username,Organization} ) {
                 Instantly deploy your Next.js site to a shareable URL
                 with&nbsp;Vercel.
               </p>
-            </a>
+            </Link>
           </div>
          
         </main>
@@ -154,7 +154,7 @@ export default function HomePage( {username,Organization} ) {
 export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
-    var username = getCookie('username', { req, res });
+    var username = getCookie("username", { req, res });
     if (username == undefined){
         username = false;
     }

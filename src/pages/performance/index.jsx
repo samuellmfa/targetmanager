@@ -1,17 +1,17 @@
-import Layout from '../../../components/layout'
-import { getCookie } from 'cookies-next';
-import Link from 'next/link'
-import React from 'react'
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import _footer from '../component/Footer/footer'
-import Titlebar from '../component/Menu/titlebar';
-import Barchart from '../charts/bar'
-import Piechart from '../charts/pie'
-import Linechart from '../charts/line'
-const inter = Inter({ subsets: ['latin'] })
+import Layout from "../../../components/layout"
+import { getCookie } from "cookies-next";
+import Link from "next/link"
+import React from "react"
+import Head from "next/head"
+import Image from "next/image"
+import { Inter } from "next/font/google"
+import styles from "@/styles/Home.module.css"
+import _footer from "../component/Footer/footer"
+import Titlebar from "../component/Menu/titlebar";
+import Barchart from "../charts/bar"
+import Piechart from "../charts/pie"
+import Linechart from "../charts/line"
+const inter = Inter({ subsets: ["latin"] })
 export default function HomePage( {username,Organization} ) {
     return (
         <>
@@ -56,7 +56,7 @@ export default function HomePage( {username,Organization} ) {
 export async function getServerSideProps(context) {
     const req = context.req
     const res = context.res
-    var username = getCookie('username', { req, res });
+    var username = getCookie("username", { req, res });
     if (username == undefined){
         username = false;
     }

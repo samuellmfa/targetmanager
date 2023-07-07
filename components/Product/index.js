@@ -18,7 +18,7 @@ export default function Product({ onSubmit, onDelete }) {
 
   return (
     <>
-      <h2>{data.name}</h2>
+      {/* <h2>{data.name}</h2>
       <p>Description: {data.description}</p>
       <p>
         Price: {data.price} {data.currency}
@@ -29,7 +29,7 @@ export default function Product({ onSubmit, onDelete }) {
       </Button>
       <button type="button" onClick={() => { setIsEditMode(!isEditMode) }}>Toggle editmode</button>
       <button type="button" onClick={() => { onDelete(id) }}>Delete product</button>
-      {isEditMode && <ProductForm onSubmit={onSubmit}/>}
+      {isEditMode && <ProductForm onSubmit={onSubmit}/>} */}
     </>
   );
 }

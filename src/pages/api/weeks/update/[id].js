@@ -2,7 +2,7 @@ import { Source_Serif_4 } from "next/font/google";
 import dbConnect from "../../../../../db/connect";
 import Department from "../../../../../db/models/Department";
 import Month from "../../../../../db/models/Month";
-import Cookies from 'cookies'
+import Cookies from "cookies"
 export default async function handler(request, response) {
   await dbConnect();
 
@@ -45,7 +45,7 @@ export default async function handler(request, response) {
   //   }
     
   //}
-  if (request.method === 'PUT') {
+  if (request.method === "PUT") {
     const formData = request.body; // Extract the form data from the request body
 
     // Process the form data and update the weekly tasks
@@ -60,8 +60,8 @@ export default async function handler(request, response) {
     });
 
     // Send a response indicating success
-    response.status(200).json({ message: 'Weekly tasks evaluated successfully' });
+    response.status(200).json({ message: "Weekly tasks evaluated successfully" });
   } else {
-    response.status(405).json({ error: 'Method Not Allowed' });
+    response.status(405).json({ error: "Method Not Allowed" });
   }
 }

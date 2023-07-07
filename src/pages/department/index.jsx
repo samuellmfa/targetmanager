@@ -1,13 +1,13 @@
-import React from 'react';
-import Layout from '../../../components/layout';
-import DepartmentsList from '../../../components/departmentsList';
-import { getCookie } from 'cookies-next';
-import Link from 'next/link';
+import React from "react";
+import Layout from "../../../components/layout";
+import DepartmentsList from "../../../components/departmentsList";
+import { getCookie } from "cookies-next";
+import Link from "next/link";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import { Chart } from 'react-google-charts';
-import Titlebar from '../component/Menu/titlebar';
-import _footer from '../component/Footer/footer';
+import { Chart } from "react-google-charts";
+import Titlebar from "../component/Menu/titlebar";
+import _footer from "../component/Footer/footer";
 export const chart_data = [];
 
 export const options = {
@@ -117,7 +117,7 @@ export default function Employee({ username, created }) {
                   <button
                     type="submit"
                     className="btn btn-primary btn-lg"
-                    style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}
+                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                   >
                     Create
                   </button>
@@ -138,6 +138,6 @@ export default function Employee({ username, created }) {
 export async function getServerSideProps(context) {
   const req = context.req;
   const res = context.res;
-  var username = getCookie('username', { req, res });
+  var username = getCookie("username", { req, res });
   return { props: { username: false } };
 }

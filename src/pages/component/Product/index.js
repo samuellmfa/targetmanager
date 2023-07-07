@@ -26,9 +26,9 @@ export default function Product({ onSubmit, onDelete }) {
         Price: {data.price} {data.currency}
       </p>
       {data.reviews.length > 0 && <Comments reviews={data.reviews} />}
-      <Button type="button" onClick={() => router.push("/")}>
+      <button type="button" onClick={() => router.push("/")}>
         Back to all
-      </Button>
+      </button>
       <button type="button" onClick={() => { setIsEditMode(!isEditMode) }}>Toggle editmode</button>
       <button type="button" onClick={() => { onDelete(id) }}>Delete product</button>
       {isEditMode && <ProductForm onSubmit={onSubmit}/>}

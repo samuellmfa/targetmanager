@@ -1,8 +1,9 @@
 import React from "react"
 import Image from "next/image"
-import 'bootstrap/dist/css/bootstrap.css';
-import { getCookie } from 'cookies-next';
-import Layout from '../../../../components/layout'
+import "bootstrap/dist/css/bootstrap.css";
+import { getCookie } from "cookies-next";
+import Link from "next/link";
+import Layout from "../../../../components/layout"
 import { faHome, faUser, faUserCircle, faUserLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Titlebar( {username,Organization} )
@@ -13,10 +14,10 @@ export default function Titlebar( {username,Organization} )
 
 {username ?
         <>
-           <h1 id="nav-title"><a href="/performance"><div><b><i>PERFORMANCE EVALUATION</i></b><br /><h3><strong>________</strong></h3></div></a></h1>
+           <h1 id="nav-title"><Link href="/performance"><div><b><i>PERFORMANCE EVALUATION</i></b><br /><h3><strong>________</strong></h3></div></Link></h1>
         </>: 
         <>
-           <h1 id="nav-title"><a href="/"><div><b><i>PERFORMANCE EVALUATION</i></b><br /><h3><strong>________</strong></h3></div></a></h1>
+           <h1 id="nav-title"><Link href="/"><div><b><i>PERFORMANCE EVALUATION</i></b><br /><h3><strong>________</strong></h3></div></Link></h1>
         </>
         }
 
@@ -25,8 +26,8 @@ export default function Titlebar( {username,Organization} )
       
       <nav>
          <ul>
-             <li><a href="/performance">Your Performance</a></li>
-             <li><a href="#">Orgn service</a></li>
+             <li><Link href="/performance">Your Performance</Link></li>
+             <li><Link href="#">Orgn service</Link></li>
         {username ?
 
 <>
@@ -36,38 +37,38 @@ export default function Titlebar( {username,Organization} )
 
 
 <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <Link class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           todos
-        </a>
+        </Link>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a href="/target" target="_self"rel="noopener noreferrer"><p> Your {Organization} target Planning&nbsp;</p></a>
-         <a href="/month" target="_self"rel="noopener noreferrer"><p> Your {Organization} Monthly Plan&nbsp;</p></a>
-         <a href="/weekly" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Evaluation&nbsp;</p></a>
+        <Link href="/target" target="_self"rel="noopener noreferrer"><p> Your {Organization} target Planning&nbsp;</p></Link>
+         <Link href="/month" target="_self"rel="noopener noreferrer"><p> Your {Organization} Monthly Plan&nbsp;</p></Link>
+         <Link href="/weekly" target="_self"rel="noopener noreferrer"><p> Your  {Organization} Weekly Evaluation&nbsp;</p></Link>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <Link class="dropdown-item" href="#">Something else here</Link>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <Link class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Profile
-        </a>
+        </Link>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a href="/profile" target="_self" rel="noopener noreferrer"><p>profile&nbsp;</p></a>
-        <a href="/profile/employee" target="_self" rel="noopener noreferrer"><p>Employee's Account&nbsp;</p></a>
-        <a href="/department" target="_self" rel="noopener noreferrer"><p>Create Departments&nbsp;</p></a>
+        <Link href="/profile" target="_self" rel="noopener noreferrer"><p>profile&nbsp;</p></Link>
+        <Link href="/profile/employee" target="_self" rel="noopener noreferrer"><p>Employee&lsquo;s Account&nbsp;</p></Link>
+        <Link href="/department" target="_self" rel="noopener noreferrer"><p>Create Departments&nbsp;</p></Link>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <Link class="dropdown-item" href="#">Something else here</Link>
         </div>
       </li>
       <li><strong>Hi {username}</strong></li>
-      <li><a href="/api/logout" target="_self" rel="noopener noreferrer"><p>Logout&nbsp;</p></a></li>
+      <li><Link href="/api/logout" target="_self" rel="noopener noreferrer"><p>Logout&nbsp;</p></Link></li>
       
       </>
         : 
         <>
-                     <li><a href="#">About</a></li>
-             <li><a href="#">Services</a></li>
-    <li> <a href="/login" target="_self" rel="noopener noreferrer">
+                     <li><Link href="#">About</Link></li>
+             <li><Link href="#">Services</Link></li>
+    <li> <Link href="/login" target="_self" rel="noopener noreferrer">
       
       
       <p>
@@ -76,9 +77,9 @@ export default function Titlebar( {username,Organization} )
         style={{ fontSize: 25, color: "#5555" }}
       />
       </p>
-      </a>
+      </Link>
       </li>
-    <li> <a href="/signup" target="_self" rel="noopener noreferrer"><p>signup&nbsp;</p></a></li>
+    <li> <Link href="/signup" target="_self" rel="noopener noreferrer"><p>signup&nbsp;</p></Link></li>
         </>
         }
 

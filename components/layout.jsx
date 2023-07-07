@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 export const siteTitle = "Login Signup Nextjs";
 
@@ -11,7 +11,7 @@ export default function Layout({ pageTitle, children }) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="VulcanWM's GuestBook"
+          content="VulcanWM&apos;&apos;s GuestBook"
         />
         <meta
           property="og:image"
