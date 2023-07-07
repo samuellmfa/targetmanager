@@ -1,6 +1,5 @@
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import { StyledButton } from "../Button/Button.styled";
 import Comments from "../Comments";
 import { useState } from "react";
 import ProductForm from "../ProductForm";
