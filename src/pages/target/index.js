@@ -8,7 +8,6 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.css";
 import TargetForm from "../../../components/TargetForm";
-import ProductList from "../../../components/ProductList";
 import React, { useState } from "react";
 import { now } from "mongoose";
 export default  function Employee( {username, created} )
@@ -191,8 +190,6 @@ export default  function Employee( {username, created} )
     </form>
     <br />
 <br />
-<br />
-    <ProductList/>
     <br />
 <br />
 <br />

@@ -7,7 +7,6 @@ import _footer from "../component/Footer/footer";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.css";
-import ProductList from "../../../components/ProductList";
 import React, { useState } from "react";
 export default  function Employee( {username, created} )
 {
@@ -120,7 +119,6 @@ export default  function Employee( {username, created} )
  <br></br><br></br><br></br>
  <input type="" value= "Upload Plan" class="btn btn-outline-success btn-xs"/>
     </form>
-    <ProductList/>
     <_footer/>
     </Layout>
     );
