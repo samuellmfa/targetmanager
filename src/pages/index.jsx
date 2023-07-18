@@ -45,16 +45,16 @@ export default function HomePage( {username,Organization} ) {
         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <Image class="d-block w-100" src="/images/f9.jpg" alt="First slide" width={300} height={300}/>
+      <Image class="d-block w-100" src="/images/f9.jpg" alt="First slide" width={400} height={200}/>
     </div>
     <div className="carousel-item">
       <Image className="d-block w-100" src="/images/Penting_Ini_7_Manfaat_Besar_Software_Manajemen_Proyek_Yang_Harus_Anda_Ketahui_077b75b636.jpg" alt="Second slide" width={400} height={300}/>
     </div>
     <div class="carousel-item">
-      <Image class="d-block w-100" src="/images/planning-.jpg" alt="Third slide"  width={300} height={300}/>
+      <Image class="d-block w-100" src="/images/planning-.jpg" alt="Third slide"  width={400} height={200}/>
     </div>
     <div class="carousel-item">
-      <Image class="d-block w-100" src="/images/project.png" alt="Fourth slide"  width={300} height={300}/>
+      <Image class="d-block w-100" src="/images/project.png" alt="Fourth slide"  width={400} height={200}/>
 
     </div>
   
